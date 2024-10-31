@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchrSignIn" prefHeight="808.0" prefWidth="1439.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.mvc.finalproject.controller.SignInController">
+   <children>
+      <Pane prefHeight="811.0" prefWidth="1440.0">
+         <children>
+            <ImageView fitHeight="1024.0" fitWidth="1440.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/pic/man-dark-bodybuilder-muscle-wallpaper-preview.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="371.0" layoutY="189.0" text="Welcome," textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="620.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/pic/SignIn.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="53.0" fitWidth="73.0" layoutX="32.0" layoutY="22.0" onMouseClicked="#btnGoToLogin" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icon/login.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="btnSignIn" disable="true" fitHeight="53.0" fitWidth="61.0" layoutX="32.0" layoutY="83.0" onMouseClicked="#btnGoToSignIn" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icon/signIn.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#d9d9d9" height="453.0" layoutX="371.0" layoutY="220.0" opacity="0.2" stroke="#ffffff00" strokeType="INSIDE" width="687.0" />
+      <ImageView fitHeight="72.0" fitWidth="25.0" layoutX="1414.0" layoutY="2.0" onMouseClicked="#btnClose" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icon/close.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="113.0" fitWidth="113.0" layoutX="370.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/pic/logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="600.0" layoutY="577.0" mnemonicParsing="false" onAction="#btnSignIn" opacity="0.4" prefHeight="45.0" prefWidth="200.0" style="-fx-background-color: #0CF25D; -fx-background-radius: 10;" text="Sign In">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <VBox layoutX="495.0" layoutY="331.0" prefHeight="231.0" prefWidth="439.0">
+         <children>
+            <TextField fx:id="txtAdminId" prefHeight="45.0" prefWidth="425.0" promptText="Admin Id" style="-fx-background-color: white; -fx-background-radius: 35;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtName" prefHeight="45.0" prefWidth="425.0" promptText="Name" style="-fx-background-color: white; -fx-background-radius: 35;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtAddress" prefHeight="45.0" prefWidth="425.0" promptText="Address" style="-fx-background-color: white; -fx-background-radius: 35;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="txtPassword" prefHeight="45.0" prefWidth="425.0" promptText="Password" style="-fx-background-color: white; -fx-background-radius: 35;">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </PasswordField>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

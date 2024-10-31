@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.mvc.finalproject.controller.HomePageController">
+   <children>
+      <Label layoutX="276.0" layoutY="1002.0" text="11.25" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="1130.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="1151.0" layoutY="16.0" text="Admin Name" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="16.0">
+         <font>
+            <Font name="Poppins Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1272.0" layoutY="43.0" text="id: 001" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="43.0">
+         <font>
+            <Font name="Poppins Light" size="14.0" />
+         </font>
+      </Label>
+      <Pane layoutX="1315.0" layoutY="4.0" AnchorPane.rightAnchor="35.0">
+         <children>
+            <Circle fill="#e5ecec" layoutX="46.0" layoutY="49.0" radius="44.0" stroke="#02d946" strokeType="INSIDE" />
+            <ImageView fitHeight="65.0" fitWidth="62.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icon/user.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="menuPane" layoutX="-26.0" layoutY="-1.0" prefHeight="1024.0" prefWidth="296.0" style="-fx-background-color: #E5ECEC; -fx-border-color: #0CF25D; -fx-border-width: 3 3 3 0; -fx-border-radius: 30; -fx-background-radius: 30;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-26.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="84.0" fitWidth="75.0" layoutX="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/pic/logo.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="113.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buddika ">
+               <font>
+                  <Font name="Sonsie One" size="18.0" />
+               </font></Text>
+            <Text layoutX="159.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fitness">
+               <font>
+                  <Font name="Sonsie One" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="205.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center">
+               <font>
+                  <Font name="Sonsie One" size="18.0" />
+               </font>
+            </Text>
+            <Label layoutX="13.0" layoutY="155.0" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: C3CCCC; -fx-background-radius: 50;" text="       Menu">
+               <font>
+                  <Font name="Poppins ExtraBold" size="14.0" />
+               </font>
+            </Label>
+            <VBox layoutX="63.0" layoutY="223.0" prefHeight="557.0" prefWidth="50.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/home.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/user.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/schedule.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/employee.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/diet.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/icon/reports.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox layoutX="123.0" layoutY="223.0" prefHeight="557.0" prefWidth="141.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+                     <font>
+                        <Font name="Poppins Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="18.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Member">
+                     <font>
+                        <Font name="Poppins Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Schedule">
+                     <font>
+                        <Font name="Poppins Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Employee">
+                     <font>
+                        <Font name="Poppins Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Diet Plan">
+                     <font>
+                        <Font name="Poppins Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Genarate">
+                     <font>
+                        <Font name="Poppins Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children></Pane>
+      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="3.0">
+         <image>
+            <Image url="@../assets/icon/setting.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="bodyPane" layoutX="276.0" layoutY="105.0" prefHeight="890.0" prefWidth="1155.0" style="-fx-background-color: ECECEC; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="105.0" />
+      <VBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="88.0" prefWidth="25.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="btnMinimize" fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT" onMouseClicked="#btnMinimize" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icon/minimize.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <viewport>
+                  <Rectangle2D minX="1140.0" width="25.0" />
+               </viewport>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT" onMouseClicked="#btnMaximize" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icon/maximize.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <viewport>
+                  <Rectangle2D minX="1140.0" width="25.0" />
+               </viewport>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT" onMouseClicked="#btnClose" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icon/close.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <viewport>
+                  <Rectangle2D minX="1140.0" width="25.0" />
+               </viewport>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label layoutX="1359.0" layoutY="1003.0" text="27/10/2024" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="11.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
