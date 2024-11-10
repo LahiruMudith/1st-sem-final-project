@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="890.0" prefWidth="1145.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.mvc.finalproject.controller.HomePageController">
+   <children>
+      <Text layoutX="512.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" AnchorPane.leftAnchor="512.0" AnchorPane.rightAnchor="511.6500015258789" AnchorPane.topAnchor="-0.5">
+         <font>
+            <Font name="Poppins Bold" size="30.0" />
+         </font>
+      </Text>
+      <Pane layoutX="94.0" layoutY="66.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="67.3499984741211">
+         <children>
+            <ImageView fitHeight="190.0" fitWidth="376.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/pic/member%20count.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="190.0" fitWidth="376.0" layoutX="251.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/pic/emplyee.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="190.0" fitWidth="376.0" layoutX="509.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/pic/schedule.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="190.0" fitWidth="376.0" layoutX="764.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/pic/Diet.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

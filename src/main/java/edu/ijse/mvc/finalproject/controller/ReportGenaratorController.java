@@ -1,4 +1,6 @@
 package edu.ijse.mvc.finalproject.controller;
 
-public class HomePageController {
+
+public class ReportGenaratorController {
+
 }

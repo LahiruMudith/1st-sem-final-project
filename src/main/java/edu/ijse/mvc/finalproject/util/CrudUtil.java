@@ -29,7 +29,7 @@ public class CrudUtil {
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle(e.getMessage());
+            alert.setContentText(e.getMessage());
             alert.show();
         }
         return (T)"Crud Util Error";

@@ -1,15 +1,14 @@
-package edu.ijse.mvc.finalproject.dto;
+package edu.ijse.mvc.finalproject.dto.tm;
 
 import lombok.*;
 
 import java.sql.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class MemberDto {
+public class MemberTM {
     private String member_id;
     private String name;
     private String address;
@@ -18,7 +17,7 @@ public class MemberDto {
     private Date register_date;
     private double weight;
     private double height;
-    private String schedule_id;
-    private String plan_id;
-    private String diet_plan_id;
+    private String schedule_name;
+    private String plan_name;
+    private String diet_plan_name;
 }

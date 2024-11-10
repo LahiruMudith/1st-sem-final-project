@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 
 import java.io.IOException;
@@ -64,7 +62,7 @@ public class LoginController implements Initializable {
     @FXML
     void btnLogin(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/homePage.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/Dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage1 = new Stage();
             stage1.setScene(scene);

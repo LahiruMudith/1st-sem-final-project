@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,23 +14,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.mvc.finalproject.controller.HomePageController">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.mvc.finalproject.controller.DashboardController">
    <children>
-      <Label layoutX="276.0" layoutY="1002.0" text="11.25" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="1130.0">
+      <Label fx:id="lblTime" layoutX="276.0" layoutY="1002.0" text="11.25" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="1130.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="1151.0" layoutY="16.0" text="Admin Name" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="16.0">
+      <Label fx:id="lblAdminName" layoutX="1151.0" layoutY="16.0" text="Admin Name" AnchorPane.rightAnchor="127.0" AnchorPane.topAnchor="16.0">
          <font>
             <Font name="Poppins Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="1272.0" layoutY="43.0" text="id: 001" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="43.0">
+      <Label fx:id="lblAdminId" layoutX="1272.0" layoutY="43.0" text="id: 001" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="43.0">
          <font>
             <Font name="Poppins Light" size="14.0" />
          </font>
       </Label>
-      <Pane layoutX="1315.0" layoutY="4.0" AnchorPane.rightAnchor="35.0">
+      <Pane layoutX="1314.3999999999999" layoutY="1.0" AnchorPane.rightAnchor="35.200000000000045">
          <children>
             <Circle fill="#e5ecec" layoutX="46.0" layoutY="49.0" radius="44.0" stroke="#02d946" strokeType="INSIDE" />
             <ImageView fitHeight="65.0" fitWidth="62.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
@@ -67,7 +68,7 @@
             </Label>
             <VBox layoutX="63.0" layoutY="223.0" prefHeight="557.0" prefWidth="50.0">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToHome" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icon/home.png" />
                      </image>
@@ -75,7 +76,7 @@
                         <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageMember" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icon/user.png" />
                      </image>
@@ -83,7 +84,7 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageSchedule" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icon/schedule.png" />
                      </image>
@@ -91,7 +92,7 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageEmployee" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icon/employee.png" />
                      </image>
@@ -99,7 +100,7 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageDietPlan" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icon/diet.png" />
                      </image>
@@ -107,7 +108,7 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToReportGenarate" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/icon/reports.png" />
                      </image>
@@ -117,84 +118,70 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox layoutX="123.0" layoutY="223.0" prefHeight="557.0" prefWidth="141.0">
+            <VBox layoutX="123.0" layoutY="223.0" prefHeight="557.0" prefWidth="152.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
-                     <font>
-                        <Font name="Poppins Medium" size="14.0" />
-                     </font>
+                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToHome" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Home">
                      <VBox.margin>
                         <Insets top="18.0" />
                      </VBox.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Member">
                      <font>
-                        <Font name="Poppins Medium" size="14.0" />
+                        <Font name="Poppins Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageMember" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Member">
+                     <font>
+                        <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="80.0" />
+                        <Insets top="68.0" />
                      </VBox.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Schedule">
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageSchedule" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Schedule">
                      <font>
-                        <Font name="Poppins Medium" size="14.0" />
+                        <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="80.0" />
+                        <Insets top="68.0" />
                      </VBox.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Employee">
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageEmployee" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Employee">
                      <font>
-                        <Font name="Poppins Medium" size="14.0" />
+                        <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="80.0" />
+                        <Insets top="68.0" />
                      </VBox.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Diet Plan">
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageDietPlan" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Diet Plan">
                      <font>
-                        <Font name="Poppins Medium" size="14.0" />
+                        <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="80.0" />
+                        <Insets top="68.0" />
                      </VBox.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Report Genarate">
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToReportGenarate" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Report Genarate">
                      <font>
-                        <Font name="Poppins Medium" size="14.0" />
+                        <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="80.0" />
+                        <Insets top="68.0" />
                      </VBox.margin>
-                  </Text>
+                  </Button>
                </children>
             </VBox>
          </children></Pane>
-      <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="3.0">
+      <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#btnSetting" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="3.0">
          <image>
             <Image url="@../assets/icon/setting.png" />
          </image>
       </ImageView>
-      <Pane fx:id="bodyPane" layoutX="276.0" layoutY="105.0" prefHeight="890.0" prefWidth="1155.0" style="-fx-background-color: ECECEC; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="276.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="105.0" />
-      <VBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="88.0" prefWidth="25.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="bodyPane" layoutX="285.0" layoutY="97.0" prefHeight="890.0" prefWidth="1140.0" style="-fx-background-color: ECECEC; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="97.0" />
+      <VBox alignment="TOP_RIGHT" layoutX="1417.0" layoutY="13.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="75.0" prefWidth="25.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="13.0">
          <children>
             <ImageView fx:id="btnMinimize" fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT" onMouseClicked="#btnMinimize" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/icon/minimize.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <viewport>
-                  <Rectangle2D minX="1140.0" width="25.0" />
-               </viewport>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT" onMouseClicked="#btnMaximize" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/icon/maximize.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -222,7 +209,7 @@
             </ImageView>
          </children>
       </VBox>
-      <Label layoutX="1359.0" layoutY="1003.0" text="27/10/2024" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="11.0">
+      <Label fx:id="lblDate" layoutX="1359.0" layoutY="1003.0" text="27/10/2024" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="11.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

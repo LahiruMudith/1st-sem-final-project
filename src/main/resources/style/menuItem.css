@@ -1,0 +1,16 @@
+.menu-item{
+    -fx-background-color: none;
+    -fx-text-fill: "#000000";
+}
+.menu-item:hover{
+    -fx-background-color: "#C3D8CA";
+    /*-fx-border-color: "#0CF25D";*/
+    -fx-background-radius: 20%;
+    /*-fx-border-radius: 15%;*/
+}
+.menu-item:pressed{
+    -fx-background-color: "#C3D8CA";
+    /*-fx-border-color: "#0CF25D";*/
+    -fx-background-radius: 20%;
+    /*-fx-border-radius: 15%;*/
+}
