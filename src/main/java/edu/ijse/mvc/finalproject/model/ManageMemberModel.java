@@ -120,4 +120,23 @@ public class ManageMemberModel {
                 memberDto.getDiet_plan_id()
         );
     }
+
+    public boolean updateMember(MemberDto memberDto) {
+        return CrudUtil.execute("update member set name=?, address=?, phone_number=?, email=?, weight=?, height=?, schedule_id=?, plan_id=?, diet_plan_id=? WHERE member_id = ?",
+                memberDto.getName(),
+                memberDto.getAddress(),
+                memberDto.getPhone_number(),
+                memberDto.getEmail(),
+                memberDto.getWeight(),
+                memberDto.getHeight(),
+                memberDto.getSchedule_id(),
+                memberDto.getPlan_id(),
+                memberDto.getDiet_plan_id(),
+                memberDto.getMember_id()
+                );
+    }
+
+    public boolean deleteMember(String id) {
+        return CrudUtil.execute("delete from member where member_id = ?",id);
+    }
 }

@@ -4,7 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -33,7 +32,7 @@
             <Font name="Poppins Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#7c7575" layoutX="594.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" AnchorPane.leftAnchor="594.0" AnchorPane.topAnchor="62.30000019073486">
+      <Text fill="#7c7575" layoutX="611.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" AnchorPane.leftAnchor="611.0" AnchorPane.topAnchor="62.30000019073486">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
@@ -62,14 +61,14 @@
                         </TextField>
                      </children>
                   </Pane>
-                  <Pane prefHeight="56.0" prefWidth="116.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
+                  <Pane prefHeight="56.0" prefWidth="134.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/icon/id.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="txtId" accessibleText="Name" layoutX="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="66.0" style="-fx-background-color: #5FE088;">
+                        <TextField fx:id="txtId" accessibleText="Name" layoutX="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="87.0" style="-fx-background-color: #5FE088;" text="EMP004">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -87,7 +86,7 @@
                   </Pane>
                   <Pane prefHeight="56.0" prefWidth="194.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                      <children>
-                        <TextField fx:id="txtPhoneNumber" accessibleText="Name" layoutX="32.0" prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: #5FE088;">
+                        <TextField fx:id="txtPhoneNumber" accessibleText="Name" layoutX="35.0" prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: #5FE088;">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -98,9 +97,9 @@
                               <Font name="BabelSans" size="18.0" />
                            </font>
                         </TextField>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="10.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/icon/phone%20number.png" />
+                              <Image url="@../assets/icon/phonenumber.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -132,14 +131,14 @@
                         </TextField>
                      </children>
                   </Pane>
-                  <Pane prefHeight="56.0" prefWidth="101.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
+                  <Pane prefHeight="56.0" prefWidth="207.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/icon/age.png" />
+                              <Image url="@../assets/icon/payment.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="txtAge" accessibleText="Name" layoutX="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="52.0" style="-fx-background-color: #5FE088;">
+                        <TextField fx:id="txtPosition" accessibleText="Name" layoutX="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="150.0" style="-fx-background-color: #5FE088;">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -150,27 +149,6 @@
                               <Font name="BabelSans" size="18.0" />
                            </font>
                         </TextField>
-                     </children>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Pane>
-                  <Pane prefHeight="56.0" prefWidth="207.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
-                     <children>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/icon/payment.png" />
-                           </image>
-                        </ImageView>
-                        <MenuButton layoutX="40.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: none;" text="MenuButton">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                           <font>
-                              <Font name="BabelSans" size="13.0" />
-                           </font>
-                        </MenuButton>
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -183,34 +161,39 @@
             </HBox>
             <HBox prefHeight="56.0" prefWidth="1001.0">
                <children>
-                  <Pane prefHeight="56.0" prefWidth="206.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
-                     <children>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/icon/date.png" />
-                           </image>
-                        </ImageView>
-                        <TextField fx:id="txtRegistrationDate" accessibleText="Name" layoutX="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="151.0" style="-fx-background-color: #5FE088;">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <font>
-                              <Font name="BabelSans" size="18.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </Pane>
                   <Pane prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../assets/icon/center%20id.png" />
+                              <Image url="@../assets/icon/centerid.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="txtScheduleId" accessibleText="Name" layoutX="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="83.0" style="-fx-background-color: #5FE088;">
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="9.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/centerid.png" />
+                           </image>
+                        </ImageView>
+                        <MenuButton fx:id="txtCenterId" layoutX="34.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="87.0" style="-fx-background-color: none;">
+                           <font>
+                              <Font name="BabelSans" size="13.0" />
+                           </font>
+                        </MenuButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane prefHeight="56.0" prefWidth="129.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="8.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/age.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="txtAge" accessibleText="Name" layoutX="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="72.0" style="-fx-background-color: #5FE088;">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -222,9 +205,6 @@
                            </font>
                         </TextField>
                      </children>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
                   </Pane>
                </children>
                <VBox.margin>
@@ -238,29 +218,19 @@
             <Font name="Poppins Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#7c7575" layoutX="478.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" AnchorPane.leftAnchor="478.0" AnchorPane.topAnchor="160.30000019073486">
+      <Text fill="#7c7575" layoutX="482.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position" AnchorPane.leftAnchor="482.0" AnchorPane.topAnchor="160.30000019073486">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#7c7575" layoutX="591.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position" AnchorPane.leftAnchor="591.0" AnchorPane.topAnchor="160.30000019073486">
-         <font>
-            <Font name="Poppins Bold" size="14.0" />
-         </font>
-      </Text>
-      <Text fill="#7c7575" layoutX="45.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Hire" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="264.30000019073486">
-         <font>
-            <Font name="Poppins Bold" size="14.0" />
-         </font>
-      </Text>
-      <Text fill="#7c7575" layoutX="262.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center Id" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="264.30000019073486">
+      <Text fill="#7c7575" layoutX="57.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Center Id" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="264.30000019073486">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
       </Text>
       <VBox alignment="CENTER" layoutX="993.0" layoutY="65.0" prefHeight="209.0" prefWidth="125.0" AnchorPane.leftAnchor="993.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="64.4">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnDelete" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #E82A2A; -fx-background-radius: 20;" text="DELETE" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDelete" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #E82A2A; -fx-background-radius: 20;" text="DELETE" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Poppins Bold" size="17.0" />
                </font>
@@ -271,7 +241,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnUpdate" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #0866D3; -fx-background-radius: 20;" text="UPDATE" textFill="WHITE">
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #0866D3; -fx-background-radius: 20;" text="UPDATE" textFill="WHITE">
                <font>
                   <Font name="Poppins Bold" size="17.0" />
                </font>
@@ -282,7 +252,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnAdd" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #03A11C; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAdd" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #03A11C; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
                <font>
                   <Font name="Poppins Bold" size="17.0" />
                </font>
@@ -295,20 +265,23 @@
             </Button>
          </children>
       </VBox>
-      <TableView fx:id="tblMember" layoutX="12.8" layoutY="375.2" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="1119.0" style="-fx-background-color: 5B5B5B;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="375.0">
+      <TableView fx:id="tblEmployee" layoutX="12.8" layoutY="375.2" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="1119.0" style="-fx-background-color: #5B5B5B;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="375.0">
         <columns>
-          <TableColumn prefWidth="62.39999181032181" text="ID" />
-          <TableColumn prefWidth="187.20002365112305" text="NAME" />
-            <TableColumn prefWidth="124.00001525878906" text="PHONE" />
-            <TableColumn prefWidth="151.20001220703125" text="ADDRESS" />
-            <TableColumn prefWidth="76.0" text="AGE" />
-            <TableColumn prefWidth="132.79998779296875" text="PAYMENT PLAN" />
-            <TableColumn prefWidth="102.4000244140625" text="SCHEDULE ID" />
-            <TableColumn prefWidth="104.0001220703125" text="WEIGHT" />
-            <TableColumn prefWidth="93.599853515625" text="HEIGHT" />
-            <TableColumn prefWidth="81.00009765625009" text="CENTER ID" />
+          <TableColumn fx:id="colId" prefWidth="62.39999181032181" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="200.0" text="NAME" />
+            <TableColumn fx:id="colPhone" prefWidth="143.0" text="PHONE" />
+            <TableColumn fx:id="colAddress" prefWidth="244.0" text="ADDRESS" />
+            <TableColumn fx:id="colAge" prefWidth="52.0" text="AGE" />
+            <TableColumn fx:id="colPosition" prefWidth="220.0" text="POSITION" />
+            <TableColumn fx:id="colHireOfDate" prefWidth="113.0" text="HIRE OF DATE" />
+            <TableColumn fx:id="colCenterId" prefWidth="83.0" text="CENTER ID" />
         </columns>
       </TableView>
+      <Text fill="#7c7575" layoutX="206.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="264.30000019073486">
+         <font>
+            <Font name="Poppins Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
    <opaqueInsets>
       <Insets />

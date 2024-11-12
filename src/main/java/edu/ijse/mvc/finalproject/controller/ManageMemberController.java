@@ -36,7 +36,6 @@ public class ManageMemberController implements Initializable {
     @FXML
     private Button btnUpdate;
 
-
     @FXML
     private TableColumn<MemberTM, Double> colHeight;
 
@@ -132,18 +131,77 @@ public class ManageMemberController implements Initializable {
         boolean b = manageMemberModel.addMember(memberDto);
         if (b){
             new Alert(Alert.AlertType.CONFIRMATION,"Member Added Successfully").show();
+            pageRefesh();
         }
-
     }
 
     @FXML
     void btnDelete(ActionEvent event) {
-
+        String id = txtId.getText();
+        boolean b = manageMemberModel.deleteMember(id);
+        if (b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Member Delete Successfully").show();
+            pageRefesh();
+        }
     }
 
     @FXML
     void btnUpdate(ActionEvent event) {
+        String name = txtName.getText();
+        String phoneNumber = txtPhoneNumber.getText();
+        Date registrationDate = Date.valueOf(LocalDate.now());
+        String scheduleId = txtScheduleId.getText();
+        Double weight = Double.parseDouble(txtWeight.getText());
+        String dietPlanId = txtDietPlanId.getText();
+        String address = txtAddress.getText();
+        String email = txtEmail.getText();
+        Double height = Double.parseDouble(txtHeight.getText());
+        String id = txtId.getText();
+        String paymentPlan = txtPaymentPlan.getText();
 
+        try {
+            ArrayList<ScheduleDto> schedule = manageMemberModel.getSchedule();
+            for (ScheduleDto scheduleDto : schedule) {
+                if (scheduleDto.getName().equals(scheduleId)) {
+                    scheduleId = scheduleDto.getSchedule_id();
+                }
+            }
+            ArrayList<PaymentPlanDto> paymentPlanDtos = manageMemberModel.getPaymentPlan();
+            for (PaymentPlanDto paymentPlanDto : paymentPlanDtos) {
+                if (paymentPlanDto.getPlan_name().equals(paymentPlan)) {
+                    paymentPlan = paymentPlanDto.getPlan_id();
+                }
+            }
+            ArrayList<DietPlanDto>  dietPlanDtos = manageMemberModel.getDietPlan();
+            for (DietPlanDto dietPlanDto : dietPlanDtos) {
+                if (dietPlanDto.getName().equals(dietPlanId)) {
+                    dietPlanId = dietPlanDto.getDiet_plan_id();
+                }
+            }
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Menu Item Set Error");
+            alert.show();
+        }
+
+        MemberDto memberDto = new MemberDto(
+                id,
+                name,
+                address,
+                phoneNumber,
+                email,
+                registrationDate,
+                weight,
+                height,
+                scheduleId,
+                paymentPlan,
+                dietPlanId
+        );
+        boolean b = manageMemberModel.updateMember(memberDto);
+        if (b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Member Update Successfully").show();
+            pageRefesh();
+        }
     }
 
     @FXML
@@ -164,33 +222,6 @@ public class ManageMemberController implements Initializable {
         txtScheduleId.setText(memberTM.getSchedule_name());
         txtPaymentPlan.setText(memberTM.getPlan_name());
         txtDietPlanId.setText(memberTM.getDiet_plan_name());
-
-        String name = txtName.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        Date registrationDate = Date.valueOf(LocalDate.now());
-        String scheduleId = txtScheduleId.getId();
-        Double weight = Double.parseDouble(txtWeight.getText());
-        String dietPlanId = txtDietPlanId.getId();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        Double height = Double.parseDouble(txtHeight.getText());
-        String id = txtId.getText();
-        String paymentPlan = txtPaymentPlan.getId();
-
-        MemberDto memberDto = new MemberDto(
-                id,
-                name,
-                address,
-                phoneNumber,
-                email,
-                registrationDate,
-                weight,
-                height,
-                scheduleId,
-                paymentPlan,
-                dietPlanId
-        );
-        System.out.println(memberDto);
     }
 
 
@@ -226,6 +257,7 @@ public class ManageMemberController implements Initializable {
     }
 
     public void pageRefesh(){
+        clearPage();
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
 
@@ -271,7 +303,29 @@ public class ManageMemberController implements Initializable {
             alert.setContentText("Menu Item Set Error");
             alert.show();
         }
+        try {
+
+            txtId.setText(manageMemberModel.getNextMemberId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Member Id Set Error");
+            alert.show();
+        }
         loadTable();
+    }
+
+    public void clearPage(){
+        txtId.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtPhoneNumber.setText("");
+        txtEmail.setText("");
+        txtWeight.setText("");
+        txtHeight.setText("");
+        txtScheduleId.setText("");
+        txtPaymentPlan.setText("");
+        txtDietPlanId.setText("");
     }
 
     @Override

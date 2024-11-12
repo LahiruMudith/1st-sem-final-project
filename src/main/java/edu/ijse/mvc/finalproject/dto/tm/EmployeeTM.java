@@ -1,4 +1,4 @@
-package edu.ijse.mvc.finalproject.dto;
+package edu.ijse.mvc.finalproject.dto.tm;
 
 import lombok.*;
 
@@ -9,7 +9,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class EmployeeDto {
+public class EmployeeTM {
     private String employee_id;
     private String center_id;
     private String name;
