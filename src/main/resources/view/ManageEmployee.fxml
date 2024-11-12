@@ -161,7 +161,7 @@
             </HBox>
             <HBox prefHeight="56.0" prefWidth="1001.0">
                <children>
-                  <Pane prefHeight="56.0" prefWidth="140.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
+                  <Pane prefHeight="56.0" prefWidth="194.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -173,7 +173,7 @@
                               <Image url="@../assets/icon/centerid.png" />
                            </image>
                         </ImageView>
-                        <MenuButton fx:id="txtCenterId" layoutX="34.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="87.0" style="-fx-background-color: none;">
+                        <MenuButton fx:id="txtCenterId" layoutX="34.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="150.0" style="-fx-background-color: none;" text="Moronthuduwa Center">
                            <font>
                               <Font name="BabelSans" size="13.0" />
                            </font>
@@ -265,19 +265,19 @@
             </Button>
          </children>
       </VBox>
-      <TableView fx:id="tblEmployee" layoutX="12.8" layoutY="375.2" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="1119.0" style="-fx-background-color: #5B5B5B;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="375.0">
+      <TableView fx:id="tblEmployee" layoutX="12.8" layoutY="375.2" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#tblClick" prefHeight="508.0" prefWidth="1119.0" style="-fx-background-color: #5B5B5B;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="375.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="62.39999181032181" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="200.0" text="NAME" />
-            <TableColumn fx:id="colPhone" prefWidth="143.0" text="PHONE" />
-            <TableColumn fx:id="colAddress" prefWidth="244.0" text="ADDRESS" />
-            <TableColumn fx:id="colAge" prefWidth="52.0" text="AGE" />
-            <TableColumn fx:id="colPosition" prefWidth="220.0" text="POSITION" />
-            <TableColumn fx:id="colHireOfDate" prefWidth="113.0" text="HIRE OF DATE" />
-            <TableColumn fx:id="colCenterId" prefWidth="83.0" text="CENTER ID" />
+          <TableColumn fx:id="colName" prefWidth="179.0" text="NAME" />
+            <TableColumn fx:id="colPhone" prefWidth="140.0" text="PHONE" />
+            <TableColumn fx:id="colAddress" prefWidth="208.0" text="ADDRESS" />
+            <TableColumn fx:id="colAge" prefWidth="56.0" text="AGE" />
+            <TableColumn fx:id="colPosition" prefWidth="175.0" text="POSITION" />
+            <TableColumn fx:id="colHireOfDate" prefWidth="115.0" text="HIRE OF DATE" />
+            <TableColumn fx:id="colCenterId" prefWidth="182.0" text="CENTER NAME" />
         </columns>
       </TableView>
-      <Text fill="#7c7575" layoutX="206.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="264.30000019073486">
+      <Text fill="#7c7575" layoutX="260.0" layoutY="278.69999980926514" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="264.0">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>

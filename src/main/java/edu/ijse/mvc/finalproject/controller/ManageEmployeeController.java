@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.Date;
@@ -92,6 +93,22 @@ public class ManageEmployeeController implements Initializable {
     @FXML
     private TextField txtPosition;
 
+    @FXML
+    void tblClick(MouseEvent event) {
+        btnAdd.setDisable(true);
+        btnDelete.setDisable(false);
+        btnUpdate.setDisable(false);
+        txtId.setEditable(false);
+
+        EmployeeTM selectedItem = tblEmployee.getSelectionModel().getSelectedItem();
+        txtCenterId.setText(selectedItem.getCenter_id());
+        txtName.setText(selectedItem.getName());
+        txtId.setText(selectedItem.getEmployee_id());
+        txtPhoneNumber.setText(selectedItem.getPhone_number());
+        txtPosition.setText(selectedItem.getPosition());
+        txtAddress.setText(selectedItem.getAddress());
+        txtAge.setText(String.valueOf(selectedItem.getAge()));
+    }
 
     @FXML
     void btnAdd(ActionEvent event) {
@@ -194,12 +211,52 @@ public class ManageEmployeeController implements Initializable {
 
     @FXML
     void btnDelete(ActionEvent event) {
-
+        boolean b = manageEmployeeModel.deleteEmployee(txtId.getText());
+        new Alert(Alert.AlertType.CONFIRMATION,"Member Delete Successfully").show();
+        pageRefesh();
     }
 
     @FXML
     void btnUpdate(ActionEvent event) {
+        String id = txtId.getText();
+        String name = txtName.getText();
+        String phoneNumber = txtPhoneNumber.getText();
+        Date date = Date.valueOf(LocalDate.now());
+        String centerId = txtCenterId.getText();
+        int age  = Integer.parseInt(txtAge.getText());
+        String address = txtAddress.getText();
+        String positionId = txtPosition.getText();
 
+        try {
+            ArrayList<FitnessCenterDto> centerDetails = manageEmployeeModel.getCenterDetails();
+            for (FitnessCenterDto centerDto : centerDetails) {
+                if (centerDto.getCenter_name().equals(centerId)) {
+                    centerId= centerDto.getCenter_id();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Center Id Set Error");
+            alert.show();
+        }
+
+        EmployeeDto employeeDto = new EmployeeDto(
+                id,
+                centerId,
+                name,
+                phoneNumber,
+                date,
+                positionId,
+                age,
+                address
+        );
+
+        boolean b = manageEmployeeModel.updateEmployee(employeeDto);
+        if (b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Member Update Successfully").show();
+            pageRefesh();
+        }
     }
 
 }

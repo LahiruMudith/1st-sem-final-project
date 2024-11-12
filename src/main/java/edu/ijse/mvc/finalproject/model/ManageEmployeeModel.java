@@ -14,11 +14,8 @@ public class ManageEmployeeModel {
 
         if (resultSet.next()){
             String lastId = resultSet.getString(1);
-            System.out.println(lastId);
             String substring = lastId.substring(3);
-            System.out.println(substring);
             int i = Integer.parseInt(substring);
-            System.out.println(i);
             int newIdIndex = i + 1;
             return String.format("EMP%03d", newIdIndex);
         }
@@ -41,7 +38,7 @@ public class ManageEmployeeModel {
         return list;
     }
     public ArrayList<EmployeeDto> getEmployee() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select * from employee");
+        ResultSet rst = CrudUtil.execute("select e.employee_id, fe.center_name, e.name, e.phone_number, e.date_of_hire, e.position, e.age, e.address from employee e left join fitness_center fe on e.center_id = fe.center_id");
 
         ArrayList<EmployeeDto> employeeList = new ArrayList<>();
         while (rst.next()){
@@ -69,6 +66,23 @@ public class ManageEmployeeModel {
                 employeeDto.getPosition(),
                 employeeDto.getAge(),
                 employeeDto.getAddress()
+        );
+    }
+
+    public boolean deleteEmployee(String id) {
+        return CrudUtil.execute("delete from employee where employee_id = ?", id);
+    }
+
+    public boolean updateEmployee(EmployeeDto employeeDto) {
+        return CrudUtil.execute("update employee set center_id=?, name=?, phone_number=?, date_of_hire=?, position=?, age=?, address=? WHERE employee_id = ?",
+                employeeDto.getCenter_id(),
+                employeeDto.getName(),
+                employeeDto.getPosition(),
+                employeeDto.getDate_of_hire(),
+                employeeDto.getPosition(),
+                employeeDto.getAge(),
+                employeeDto.getAddress(),
+                employeeDto.getEmployee_id()
         );
     }
 }

@@ -101,6 +101,7 @@ public class ManageMemberController implements Initializable {
 
     @FXML
     private TextField txtWeight;
+
     @FXML
     void btnAdd(ActionEvent event) {
         String name = txtName.getText();
