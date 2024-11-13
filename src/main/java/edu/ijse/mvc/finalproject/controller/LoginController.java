@@ -70,6 +70,7 @@ public class LoginController implements Initializable {
             stage1.setMaximized(true);
             stage1.setResizable(true);
             stage1.centerOnScreen();
+
             Stage window = (Stage) btnLogin.getScene().getWindow();
             window.close();
             stage1.show();

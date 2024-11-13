@@ -131,24 +131,23 @@
                         </TextField>
                      </children>
                   </Pane>
-                  <Pane prefHeight="56.0" prefWidth="207.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
+                  <Pane prefHeight="56.0" prefWidth="252.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../assets/icon/payment.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="txtPosition" accessibleText="Name" layoutX="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="150.0" style="-fx-background-color: #5FE088;">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
+                        <MenuButton fx:id="txtPosition" layoutX="38.0" layoutY="1.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="166.0" style="-fx-background-color: none;">
                            <font>
-                              <Font name="BabelSans" size="18.0" />
+                              <Font name="BabelSans" size="13.0" />
                            </font>
-                        </TextField>
+                        </MenuButton>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="213.0" layoutY="16.0" onMouseClicked="#btnAddPosition" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/add.png" />
+                           </image>
+                        </ImageView>
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -173,7 +172,7 @@
                               <Image url="@../assets/icon/centerid.png" />
                            </image>
                         </ImageView>
-                        <MenuButton fx:id="txtCenterId" layoutX="34.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="150.0" style="-fx-background-color: none;" text="Moronthuduwa Center">
+                        <MenuButton fx:id="txtCenterId" layoutX="34.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="150.0" style="-fx-background-color: none;">
                            <font>
                               <Font name="BabelSans" size="13.0" />
                            </font>

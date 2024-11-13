@@ -2,6 +2,7 @@ package edu.ijse.mvc.finalproject.model;
 
 import edu.ijse.mvc.finalproject.dto.EmployeeDto;
 import edu.ijse.mvc.finalproject.dto.FitnessCenterDto;
+import edu.ijse.mvc.finalproject.dto.PositionItemDto;
 import edu.ijse.mvc.finalproject.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -34,6 +35,20 @@ public class ManageEmployeeModel {
                     resultSet.getString(4)
             );
             list.add(centerDto);
+        }
+        return list;
+    }
+
+    public ArrayList<PositionItemDto> getPositions() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select * from positionitem");
+
+        ArrayList<PositionItemDto> list = new ArrayList<>();
+
+        while (rst.next()){
+            PositionItemDto positionItemDto = new PositionItemDto(
+                    rst.getString(1)
+            );
+            list.add(positionItemDto);
         }
         return list;
     }
@@ -84,5 +99,9 @@ public class ManageEmployeeModel {
                 employeeDto.getAddress(),
                 employeeDto.getEmployee_id()
         );
+    }
+
+    public boolean setPosition(PositionItemDto positionItemDto) {
+        return CrudUtil.execute("insert into positionItem values (?)", positionItemDto.getPositionName());
     }
 }

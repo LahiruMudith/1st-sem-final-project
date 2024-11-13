@@ -6,17 +6,27 @@ import edu.ijse.mvc.finalproject.model.ManageEmployeeModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ManageEmployeeController implements Initializable {
@@ -91,7 +101,7 @@ public class ManageEmployeeController implements Initializable {
     private TextField txtPhoneNumber;
 
     @FXML
-    private TextField txtPosition;
+    private MenuButton txtPosition;
 
     @FXML
     void tblClick(MouseEvent event) {
@@ -108,6 +118,28 @@ public class ManageEmployeeController implements Initializable {
         txtPosition.setText(selectedItem.getPosition());
         txtAddress.setText(selectedItem.getAddress());
         txtAge.setText(String.valueOf(selectedItem.getAge()));
+    }
+
+    @FXML
+    void btnAddPosition(MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/PositionAdd.fxml"));
+        try {
+            Parent load = loader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.setScene(new Scene(load));
+            stage.setResizable(true);
+            stage.initModality(Modality.WINDOW_MODAL);
+            Window underWindow = btnAdd.getScene().getWindow();
+            stage.initOwner(underWindow);
+
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Position Add Menu Load Fail");
+            alert.show();
+        }
     }
 
     @FXML
@@ -145,6 +177,7 @@ public class ManageEmployeeController implements Initializable {
 
         clearPage();
         loadTable();
+
         try {
             txtId.setText(manageEmployeeModel.getNextEmployeeId());
         } catch (SQLException e) {
@@ -168,6 +201,23 @@ public class ManageEmployeeController implements Initializable {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Center Id Set Error");
+            alert.show();
+        }
+
+        try {
+            MenuButton paymentPlan = (MenuButton) txtPosition;
+            ArrayList<PositionItemDto> centerDetails = manageEmployeeModel.getPositions();
+            for(PositionItemDto centerDto : centerDetails){
+                MenuItem menuItem = new MenuItem(centerDto.getPositionName());
+                menuItem.setOnAction(event -> {
+                    paymentPlan.setText(centerDto.getPositionName());
+                });
+                paymentPlan.getItems().add(menuItem);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Positions Set Error");
             alert.show();
         }
     }
