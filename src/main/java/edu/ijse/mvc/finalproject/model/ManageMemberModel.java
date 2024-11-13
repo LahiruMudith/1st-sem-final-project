@@ -35,14 +35,18 @@ public class ManageMemberModel {
         return list;
     }
     public ArrayList<ScheduleDto> getSchedule() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("select * from schedule;");
+        ResultSet resultSet = CrudUtil.execute("select s.schedule_id, s.name, s.admin_id, es.exercise_id, es.exercise_name, es.exercise_count, es.exercise_set from schedule s left join exerciseschedule es on s.schedule_id = es.schedule_id");
         ArrayList<ScheduleDto> list = new ArrayList<>();
 
         while (resultSet.next()){
             ScheduleDto scheduleDto = new ScheduleDto(
-                   resultSet.getString(1),
-                   resultSet.getString(2),
-                   resultSet.getString(3)
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getInt(6),
+                    resultSet.getInt(7)
             );
             list.add(scheduleDto);
         }

@@ -232,7 +232,7 @@
       </Text>
       <VBox alignment="CENTER" layoutX="923.0" layoutY="87.0" prefHeight="210.0" prefWidth="161.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="87.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnDelete" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #E82A2A; -fx-background-radius: 20;" text="DELETE" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDelete" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #E82A2A; -fx-background-radius: 20;" text="DELETE" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Poppins Bold" size="17.0" />
                </font>
@@ -243,7 +243,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnUpdate" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #0866D3; -fx-background-radius: 20;" text="UPDATE" textFill="WHITE">
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #0866D3; -fx-background-radius: 20;" text="UPDATE" textFill="WHITE">
                <font>
                   <Font name="Poppins Bold" size="17.0" />
                </font>
@@ -254,7 +254,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnAdd" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #03A11C; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnAdd" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #03A11C; -fx-background-radius: 20;" text="ADD" textFill="WHITE">
                <font>
                   <Font name="Poppins Bold" size="17.0" />
                </font>
@@ -269,8 +269,8 @@
       </VBox>
       <TableView fx:id="tblMember" layoutX="872.0" layoutY="492.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="259.0" style="-fx-background-color: 5B5B5B;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="14.0">
         <columns>
-          <TableColumn prefWidth="85.0" text="ID" />
-          <TableColumn prefWidth="175.9999237060547" text="NAME" />
+          <TableColumn fx:id="colId" prefWidth="85.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="175.9999237060547" text="NAME" />
         </columns>
       </TableView>
       <ImageView fitHeight="34.0" fitWidth="44.0" layoutX="801.0" layoutY="192.0" onMouseClicked="#btnAddExercise" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="664.0" AnchorPane.leftAnchor="801.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="192.0">
