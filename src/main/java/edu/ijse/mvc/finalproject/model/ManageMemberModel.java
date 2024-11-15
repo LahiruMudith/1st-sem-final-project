@@ -1,8 +1,10 @@
 package edu.ijse.mvc.finalproject.model;
 
+import edu.ijse.mvc.finalproject.db.DBConnection;
 import edu.ijse.mvc.finalproject.dto.*;
 import edu.ijse.mvc.finalproject.util.CrudUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,21 +36,21 @@ public class ManageMemberModel {
             }
         return list;
     }
-    public ArrayList<ScheduleDto> getSchedule() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("select s.schedule_id, s.name, s.admin_id, es.exercise_id, es.exercise_name, es.exercise_count, es.exercise_set from schedule s left join exerciseschedule es on s.schedule_id = es.schedule_id");
-        ArrayList<ScheduleDto> list = new ArrayList<>();
+    public ArrayList<ExerciseScheduleDto> getSchedule() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select * from exerciseschedule");
+        ArrayList<ExerciseScheduleDto> list = new ArrayList<>();
 
         while (resultSet.next()){
-            ScheduleDto scheduleDto = new ScheduleDto(
+            ExerciseScheduleDto exerciseScheduleDto = new ExerciseScheduleDto(
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
                     resultSet.getString(4),
-                    resultSet.getString(5),
+                    resultSet.getInt(5),
                     resultSet.getInt(6),
-                    resultSet.getInt(7)
+                    resultSet.getString(7)
             );
-            list.add(scheduleDto);
+            list.add(exerciseScheduleDto);
         }
         return list;
     }

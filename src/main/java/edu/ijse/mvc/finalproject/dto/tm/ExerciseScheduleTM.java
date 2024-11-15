@@ -1,4 +1,4 @@
-package edu.ijse.mvc.finalproject.dto;
+package edu.ijse.mvc.finalproject.dto.tm;
 
 import lombok.*;
 
@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ExerciseScheduleDto {
+public class ExerciseScheduleTM {
     private String schedule_id;
     private String exercise_id;
     private String exercise_name;

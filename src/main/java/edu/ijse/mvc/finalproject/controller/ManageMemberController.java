@@ -161,10 +161,10 @@ public class ManageMemberController implements Initializable {
         String paymentPlan = txtPaymentPlan.getText();
 
         try {
-            ArrayList<ScheduleDto> schedule = manageMemberModel.getSchedule();
-            for (ScheduleDto scheduleDto : schedule) {
-                if (scheduleDto.getName().equals(scheduleId)) {
-                    scheduleId = scheduleDto.getSchedule_id();
+            ArrayList<ExerciseScheduleDto> schedule = manageMemberModel.getSchedule();
+            for (ExerciseScheduleDto exerciseScheduleDto : schedule) {
+                if (exerciseScheduleDto.getSchedule_id().equals(scheduleId)) {
+                    scheduleId = exerciseScheduleDto.getSchedule_id();
                 }
             }
             ArrayList<PaymentPlanDto> paymentPlanDtos = manageMemberModel.getPaymentPlan();
@@ -277,12 +277,12 @@ public class ManageMemberController implements Initializable {
             }
 
             MenuButton schedule = (MenuButton) txtScheduleId;
-            ArrayList<ScheduleDto> scheduleList = manageMemberModel.getSchedule();
-            for(ScheduleDto scheduleDto : scheduleList){
-                MenuItem menuItem = new MenuItem(scheduleDto.getName());
+            ArrayList<ExerciseScheduleDto> scheduleList = manageMemberModel.getSchedule();
+            for(ExerciseScheduleDto exerciseScheduleDto : scheduleList){
+                MenuItem menuItem = new MenuItem(exerciseScheduleDto.getSchedule_name());
                 menuItem.setOnAction(event -> {
-                    schedule.setText(scheduleDto.getName());
-                    schedule.setId(scheduleDto.getSchedule_id());
+                    schedule.setText(exerciseScheduleDto.getSchedule_name());
+                    schedule.setId(exerciseScheduleDto.getSchedule_id());
                 });
                 schedule.getItems().add(menuItem);
             }

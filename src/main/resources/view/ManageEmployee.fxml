@@ -68,7 +68,7 @@
                               <Image url="@../assets/icon/id.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="txtId" accessibleText="Name" layoutX="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="87.0" style="-fx-background-color: #5FE088;" text="EMP004">
+                        <TextField fx:id="txtId" accessibleText="Name" editable="false" layoutX="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="87.0" style="-fx-background-color: #5FE088;" text="EMP004">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>

@@ -4,7 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -34,7 +33,7 @@
             <Font name="Poppins Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#7c7575" layoutX="521.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Id" AnchorPane.leftAnchor="521.0" AnchorPane.topAnchor="62.30000019073486">
+      <Text fill="#7c7575" layoutX="521.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Name" AnchorPane.leftAnchor="521.0" AnchorPane.topAnchor="62.30000019073486">
          <font>
             <Font name="Poppins Bold" size="14.0" />
          </font>
@@ -45,7 +44,7 @@
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="7.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../assets/icon/txt%20schedule.png" />
+                        <Image url="@../assets/icon/txtSchedule.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="txtName" accessibleText="Name" layoutX="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="251.0" style="-fx-background-color: #5FE088;">
@@ -92,10 +91,6 @@
                      </image>
                   </ImageView>
                   <MenuButton fx:id="txtAdminId" layoutX="36.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="154.0" style="-fx-background-color: none;" text=" ">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
                      <font>
                         <Font name="BabelSans" size="13.0" />
                      </font>
@@ -116,25 +111,13 @@
                         <Image url="@../assets/icon/pick.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txtAddress" accessibleText="Name" layoutX="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="405.0" style="-fx-background-color: #5FE088;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <font>
-                        <Font name="BabelSans" size="18.0" />
-                     </font>
-                  </TextField>
                   <MenuButton fx:id="txtExercise" layoutX="33.0" layoutY="1.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="405.0" style="-fx-background-color: none;" text=" ">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
                      <font>
                         <Font name="BabelSans" size="13.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </MenuButton>
                </children>
             </Pane>
@@ -186,7 +169,7 @@
             </Pane>
          </children>
       </HBox>
-      <HBox layoutX="30.0" layoutY="281.0" prefHeight="440.0" prefWidth="904.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="211.0" AnchorPane.topAnchor="281.0">
+      <HBox layoutX="30.0" layoutY="281.0" prefHeight="440.0" prefWidth="732.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="383.0" AnchorPane.topAnchor="281.0">
          <children>
             <Pane prefHeight="218.0" prefWidth="721.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                <children>
@@ -195,17 +178,13 @@
                         <Image url="@../assets/icon/description.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txtDescription" accessibleText="Name" layoutX="32.0" layoutY="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="432.0" prefWidth="670.0" style="-fx-background-color: #5FE088;">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                     <font>
-                        <Font name="BabelSans" size="18.0" />
-                     </font>
-                  </TextField>
+                  <TableView fx:id="tblDescription" focusTraversable="false" layoutX="32.0" layoutY="16.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="669.0" style="-fx-background-color: none;">
+                     <columns>
+                        <TableColumn fx:id="colExerciseName" editable="false" prefWidth="523.2000007629395" text="Exercise Name" />
+                        <TableColumn fx:id="colSet" prefWidth="68.0" text="Set" />
+                        <TableColumn fx:id="colCount" prefWidth="79.20001220703125" text="Count" />
+                     </columns>
+                  </TableView>
                </children>
             </Pane>
          </children>
@@ -230,7 +209,7 @@
             <Font name="Poppins Bold" size="14.0" />
          </font>
       </Text>
-      <VBox alignment="CENTER" layoutX="923.0" layoutY="87.0" prefHeight="210.0" prefWidth="161.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="87.0">
+      <VBox alignment="CENTER" layoutX="921.0" layoutY="72.0" prefHeight="250.0" prefWidth="161.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="72.0">
          <children>
             <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDelete" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #E82A2A; -fx-background-radius: 20;" text="DELETE" textFill="WHITE" VBox.vgrow="ALWAYS">
                <font>
@@ -265,18 +244,32 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#btnAddNewExercise" prefHeight="46.0" prefWidth="125.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Add Exercise" textFill="WHITE">
+               <font>
+                  <Font name="Poppins Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
-      <TableView fx:id="tblMember" layoutX="872.0" layoutY="492.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="259.0" style="-fx-background-color: 5B5B5B;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="14.0">
+      <TableView fx:id="tblMember" layoutX="872.0" layoutY="492.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#tblClick" prefHeight="378.0" prefWidth="259.0" style="-fx-background-color: #5B5B5B;" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="14.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="85.0" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="175.9999237060547" text="NAME" />
+          <TableColumn fx:id="colName" prefWidth="172.80001373291014" text="NAME" />
         </columns>
       </TableView>
-      <ImageView fitHeight="34.0" fitWidth="44.0" layoutX="801.0" layoutY="192.0" onMouseClicked="#btnAddExercise" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="664.0" AnchorPane.leftAnchor="801.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="192.0">
+      <ImageView fx:id="imgAddExercise" fitHeight="34.0" fitWidth="44.0" layoutX="801.0" layoutY="192.0" onMouseClicked="#btnAddExercise" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="664.0" AnchorPane.leftAnchor="801.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="192.0">
          <image>
             <Image url="@../assets/icon/add.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
    <opaqueInsets>

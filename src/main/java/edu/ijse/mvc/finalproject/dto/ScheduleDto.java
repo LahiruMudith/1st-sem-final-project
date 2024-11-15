@@ -11,8 +11,4 @@ public class ScheduleDto {
     String schedule_id;
     String name;
     String admin_id;
-    String exercise_id;
-    String exercise_name;
-    int exercise_count;
-    int exercise_set;
 }
