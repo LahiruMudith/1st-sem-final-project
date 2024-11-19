@@ -4,6 +4,7 @@ module edu.ijse.mvc.finalproject {
     requires java.sql;
     requires static lombok;
     requires java.desktop;
+    requires net.sf.jasperreports.core;
 
     opens edu.ijse.mvc.finalproject.controller to javafx.fxml;
     opens edu.ijse.mvc.finalproject.dto.tm to javafx.base;

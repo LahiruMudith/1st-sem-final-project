@@ -1,0 +1,75 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="DietPlanReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="99950995-9bd5-48c1-aa34-fa90cfdb175c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BudiikaFitnessCenterDBConnection"/>
+	<parameter name="diet_plan_id" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[select * from diet_plan where diet_plan_id= $P{diet_plan_id}]]></query>
+	<field name="diet_plan_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diet_plan_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="diet_plan_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="diet_plan"/>
+	</field>
+	<field name="admin_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="admin_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="admin_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="diet_plan"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="diet_plan"/>
+	</field>
+	<field name="duration" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="duration"/>
+		<property name="com.jaspersoft.studio.field.label" value="duration"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="diet_plan"/>
+	</field>
+	<field name="description" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="description"/>
+		<property name="com.jaspersoft.studio.field.label" value="description"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="diet_plan"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="80" splitType="Stretch">
+		<element kind="staticText" uuid="939b2126-8af2-4996-9ab9-6b0d166d1870" x="0" y="0" width="560" height="80" fontSize="24.0" hTextAlign="Center">
+			<text><![CDATA[Diet Plan Report]]></text>
+		</element>
+	</title>
+	<pageHeader height="114" splitType="Stretch">
+		<element kind="staticText" uuid="9333b6e1-f74f-4d5f-964a-c459ca3248a1" x="0" y="0" width="100" height="30" fontSize="14.0" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Diet Plan Id : ]]></text>
+		</element>
+		<element kind="staticText" uuid="0e489e70-fee5-4546-908f-6ef9fab0303e" x="0" y="30" width="110" height="30" fontSize="14.0" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Diet Plan Name : ]]></text>
+		</element>
+		<element kind="staticText" uuid="09996032-f88e-4ee3-8a9c-de0bfe2be4de" x="0" y="60" width="140" height="30" fontSize="14.0" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Diet Plan Duration: ]]></text>
+		</element>
+		<element kind="textField" uuid="01cadbb5-d32d-4b51-8076-6702be484ad9" x="130" y="30" width="150" height="30" fontSize="14.0" bold="true" vTextAlign="Middle">
+			<expression><![CDATA[$F{name}]]></expression>
+		</element>
+		<element kind="textField" uuid="f6f6e792-cccf-4f5c-9673-82eb112765e6" x="140" y="60" width="140" height="30" fontSize="14.0" bold="true" vTextAlign="Middle">
+			<expression><![CDATA[$F{duration}]]></expression>
+		</element>
+		<element kind="textField" uuid="80993811-71dd-47c0-a5d3-3726a780522e" x="100" y="0" width="140" height="30" fontSize="14.0" bold="true" vTextAlign="Middle">
+			<expression><![CDATA[$F{diet_plan_id}]]></expression>
+		</element>
+	</pageHeader>
+	<columnHeader height="30" splitType="Stretch">
+		<element kind="staticText" uuid="36989cff-38d3-48fc-b1b0-7dadd7d62772" x="230" y="0" width="100" height="30" fontSize="14.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Description]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="53ba86f4-6044-4c49-ab04-88ec611eac9c"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<element kind="textField" uuid="876d12f8-eb5b-4fac-abf0-26d2e865418f" x="0" y="0" width="560" height="125">
+				<expression><![CDATA[$F{description}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="53ba86f4-6044-4c49-ab04-88ec611eac9c"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>
