@@ -126,4 +126,14 @@ public class ScheduleModel {
                 exerciseDto.getDescription()
         );
     }
+
+    public ArrayList<String> getScheduleName() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select schedule_id from schedule");
+
+        ArrayList<String> scheduleNames = new ArrayList<>();
+        while (rst.next()){
+            scheduleNames.add(rst.getString(1));
+        }
+        return scheduleNames;
+    }
 }

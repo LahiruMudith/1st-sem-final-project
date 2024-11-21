@@ -1,9 +1,7 @@
 package edu.ijse.mvc.finalproject.controller;
 
 import edu.ijse.mvc.finalproject.db.DBConnection;
-import edu.ijse.mvc.finalproject.dto.PositionItemDto;
-import edu.ijse.mvc.finalproject.model.DietPlanModel;
-import edu.ijse.mvc.finalproject.model.ManageEmployeeModel;
+import edu.ijse.mvc.finalproject.model.ScheduleModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,59 +10,45 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
-public class DietPlanReportPopUpMenuController implements Initializable {
-    DietPlanModel dietPlanModel = new DietPlanModel();
-    String selectedCusId = null;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            ArrayList<String> dietPlanIds = dietPlanModel.getDietPlanIds();
-            ObservableList<String> observableList = FXCollections.observableArrayList();
-            observableList.addAll(dietPlanIds);
-            txtDietPlanId.setItems(observableList);
-            txtDietPlanId.setOnAction(e->{
-                selectedCusId = txtDietPlanId.getSelectionModel().getSelectedItem();
-            });
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+public class SchedulePopUpMenuController implements Initializable {
+    ScheduleModel scheduleModel = new ScheduleModel();
+    String selectScheduleId = null;
 
     @FXML
-    private ComboBox<String> txtDietPlanId;
+    private ComboBox<String> txt;
 
     @FXML
     private Label txtError;
 
     @FXML
+    void btnClose(MouseEvent event) {
+        Stage window = (Stage) txt.getScene().getWindow();
+        window.close();
+    }
+
+    @FXML
     void btnGenarate(ActionEvent event) throws InterruptedException {
-        if (txtDietPlanId.getSelectionModel().getSelectedItem() != null) {
+        if (txt.getSelectionModel().getSelectedItem() != null) {
             try {
                 JasperReport jasperReport = JasperCompileManager.compileReport(
                         getClass()
-                                .getResourceAsStream("/report/DietPlanReport.jrxml"
+                                .getResourceAsStream("/report/ScheduleReport.jrxml"
                                 ));
 
                 Connection connection = DBConnection.getInstance().getConnection();
 
                 Map<String, Object> parameters = new HashMap<>();
-                parameters.put("diet_plan_id", selectedCusId);
+                parameters.put("schedule_id", selectScheduleId);
 
                 JasperPrint jasperPrint = JasperFillManager.fillReport(
                         jasperReport,
@@ -78,7 +62,7 @@ public class DietPlanReportPopUpMenuController implements Initializable {
 //           e.printStackTrace();
             }
         }else {
-            txtError.setText("Please select diet plan");
+            txtError.setText("Please select Schedule Id");
             if (txtError.getText().isEmpty()) {
                 Thread.sleep(2000);
                 txtError.setText("");
@@ -86,10 +70,18 @@ public class DietPlanReportPopUpMenuController implements Initializable {
         }
     }
 
-    @FXML
-    void btnClose(MouseEvent event) {
-        Stage window = (Stage) txtDietPlanId.getScene().getWindow();
-        window.close();
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ArrayList<String> scheduleName = scheduleModel.getScheduleName();
+            ObservableList<String> observableList = FXCollections.observableArrayList();
+            observableList.addAll(scheduleName);
+            txt.setItems(observableList);
+            txt.setOnAction(e->{
+                selectScheduleId = txt.getSelectionModel().getSelectedItem();
+            });
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 }

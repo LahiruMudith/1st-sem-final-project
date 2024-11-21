@@ -59,5 +59,27 @@ public class ReportGenaratorController {
             alert.show();
         }
     }
+    @FXML
+    void genarateScheduleReport(MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ScheduleReportPopUpMenu.fxml"));
+        try {
+            Parent load = loader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.setScene(new Scene(load));
+            stage.setResizable(true);
+            stage.initModality(Modality.WINDOW_MODAL);
+            Window underWindow = pane.getScene().getWindow();
+            stage.initOwner(underWindow);
+
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Diet Plan Pop Up Menu Load Fail");
+            alert.show();
+        }
+    }
+
 
 }

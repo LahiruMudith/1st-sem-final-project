@@ -66,107 +66,97 @@
                   <Font name="Poppins ExtraBold" size="14.0" />
                </font>
             </Label>
-            <VBox layoutX="63.0" layoutY="223.0" prefHeight="557.0" prefWidth="50.0">
+            <VBox layoutX="60.0" layoutY="223.0" prefHeight="690.0" prefWidth="215.0">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToHome" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icon/home.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageMember" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icon/user.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageSchedule" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icon/schedule.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageEmployee" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icon/employee.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageDietPlan" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icon/diet.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToReportGenarate" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/icon/reports.png" />
-                     </image>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </ImageView>
-               </children>
-            </VBox>
-            <VBox layoutX="123.0" layoutY="223.0" prefHeight="557.0" prefWidth="152.0">
-               <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToHome" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Home">
+                  <Button fx:id="btnHome" mnemonicParsing="false" onMouseClicked="#btnGoToHome" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Home">
                      <VBox.margin>
                         <Insets top="18.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Poppins Bold" size="14.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToHome" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageMember" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Member">
+                  <Button fx:id="btnManageMember" mnemonicParsing="false" onMouseClicked="#btnGoToManageMember" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Member">
                      <font>
                         <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="68.0" />
+                        <Insets top="40.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageMember" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/user.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageSchedule" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Schedule">
+                  <Button fx:id="btnManageSchedule" mnemonicParsing="false" onMouseClicked="#btnGoToManageSchedule" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Schedule">
                      <font>
                         <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="68.0" />
+                        <Insets top="40.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageSchedule" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/schedule.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageEmployee" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Employee">
+                  <Button fx:id="btnManageEmployee" mnemonicParsing="false" onMouseClicked="#btnGoToManageEmployee" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Employee">
                      <font>
                         <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="68.0" />
+                        <Insets top="40.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageEmployee" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/employee.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToManageDietPlan" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Diet Plan">
+                  <Button fx:id="btnManageDietPlan" mnemonicParsing="false" onMouseClicked="#btnGoToManageDietPlan" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Manage Diet Plan">
                      <font>
                         <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="68.0" />
+                        <Insets top="40.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToManageDietPlan" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/diet.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#btnGoToReportGenarate" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Report Genarate">
+                  <Button fx:id="btnManageReportGenarator" mnemonicParsing="false" onMouseClicked="#btnGoToReportGenarate" styleClass="menu-item" stylesheets="@../style/menuItem.css" text="Report Genarate">
                      <font>
                         <Font name="Poppins Bold" size="14.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="68.0" />
+                        <Insets top="40.0" />
                      </VBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#btnGoToReportGenarate" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/icon/reports.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </VBox>

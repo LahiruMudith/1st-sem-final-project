@@ -1,0 +1,103 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="ScheduleReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bcfc3d8c-9e25-43dc-a148-181618d6470a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BudiikaFitnessCenterDBConnection"/>
+	<parameter name="schedule_id" class="java.lang.String"/>
+	<query language="SQL"><![CDATA[select * from exerciseSchedule where schedule_id= $P{schedule_id}]]></query>
+	<field name="schedule_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="schedule_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="schedule_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exerciseschedule"/>
+	</field>
+	<field name="exercise_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="exercise_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="exercise_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exerciseschedule"/>
+	</field>
+	<field name="exercise_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="exercise_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="exercise_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exerciseschedule"/>
+	</field>
+	<field name="schedule_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="schedule_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="schedule_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exerciseschedule"/>
+	</field>
+	<field name="exercise_count" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="exercise_count"/>
+		<property name="com.jaspersoft.studio.field.label" value="exercise_count"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exerciseschedule"/>
+	</field>
+	<field name="exercise_set" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="exercise_set"/>
+		<property name="com.jaspersoft.studio.field.label" value="exercise_set"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exerciseschedule"/>
+	</field>
+	<field name="admin_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="admin_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="admin_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="exerciseschedule"/>
+	</field>
+	<background splitType="Stretch"/>
+	<title height="80" splitType="Stretch">
+		<element kind="staticText" uuid="f92f6217-a5af-4cfa-b2b4-8bacb6a87bf2" x="0" y="0" width="560" height="80" fontSize="24.0" hTextAlign="Center">
+			<text><![CDATA[Schedule Report]]></text>
+		</element>
+	</title>
+	<pageHeader height="58" splitType="Stretch">
+		<element kind="staticText" uuid="9de3d6ec-4ac1-4b3a-9a11-aa48bbc9c0dc" x="320" y="0" width="100" height="30" fontSize="14.0" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Schedule Id : ]]></text>
+		</element>
+		<element kind="staticText" uuid="b27e2990-ab83-4ad6-ab2b-b1e43c737098" x="0" y="0" width="130" height="30" fontSize="14.0" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Schedule Name : ]]></text>
+		</element>
+		<element kind="textField" uuid="2be27177-0902-43ee-a50e-04c26e880b3a" x="120" y="0" width="100" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<expression><![CDATA[$F{schedule_name}]]></expression>
+		</element>
+		<element kind="textField" uuid="5a182dd5-82db-408c-8dc2-7bc9435a2214" x="410" y="0" width="100" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<expression><![CDATA[$F{schedule_id}]]></expression>
+		</element>
+	</pageHeader>
+	<columnHeader height="44" splitType="Stretch">
+		<element kind="staticText" uuid="9ecb5e02-0c75-4b59-b849-71182d4bf752" x="0" y="0" width="141" height="30">
+			<text><![CDATA[exercise_id]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e11700df-e886-46da-84c4-78c92e47d156"/>
+		</element>
+		<element kind="staticText" uuid="654ed892-e29d-47c8-a870-922463aebb6a" x="141" y="0" width="138" height="30">
+			<text><![CDATA[exercise_name]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c35fe259-14fe-43a5-b102-5e452dafd52c"/>
+		</element>
+		<element kind="staticText" uuid="60a79922-3bab-499a-8c83-61b7986a7fde" x="279" y="0" width="138" height="30">
+			<text><![CDATA[exercise_count]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90cc1959-ad31-4ace-9c9c-4e565da123c1"/>
+		</element>
+		<element kind="staticText" uuid="2e2c3162-6a29-4340-bccd-db9e6ee7218f" x="417" y="0" width="138" height="30">
+			<text><![CDATA[exercise_set]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="64387a14-aeac-41b0-bfec-22b8b797b5fc"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="35" splitType="Stretch">
+			<element kind="textField" uuid="71c48634-079d-492c-ad18-2d10466fcf4c" x="0" y="0" width="141" height="30">
+				<expression><![CDATA[$F{exercise_id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e11700df-e886-46da-84c4-78c92e47d156"/>
+			</element>
+			<element kind="textField" uuid="66677aa2-a167-414e-afe1-b5a5835bfbc6" x="141" y="0" width="138" height="30">
+				<expression><![CDATA[$F{exercise_name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c35fe259-14fe-43a5-b102-5e452dafd52c"/>
+			</element>
+			<element kind="textField" uuid="9eb0663f-4c63-4f8d-9e1f-bf9c94d1731e" x="279" y="0" width="138" height="30">
+				<expression><![CDATA[$F{exercise_count}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="90cc1959-ad31-4ace-9c9c-4e565da123c1"/>
+			</element>
+			<element kind="textField" uuid="03762615-67ac-477e-b8af-7e4756dbeb2a" x="417" y="0" width="138" height="30">
+				<expression><![CDATA[$F{exercise_set}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="64387a14-aeac-41b0-bfec-22b8b797b5fc"/>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

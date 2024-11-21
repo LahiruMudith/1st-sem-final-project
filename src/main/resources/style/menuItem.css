@@ -5,10 +5,13 @@
 .menu-item:hover{
     -fx-background-color: "#C3D8CA";
     /*-fx-border-color: "#0CF25D";*/
-    -fx-background-radius: 20%;
+    /*-fx-background-radius: 5%;*/
     /*-fx-border-radius: 15%;*/
 }
 .menu-item:pressed{
+    .menu-item{
+        -fx-background-color:"#C3D8CA" ;
+    }
     -fx-background-color: "#C3D8CA";
     /*-fx-border-color: "#0CF25D";*/
     -fx-background-radius: 20%;

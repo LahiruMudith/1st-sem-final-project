@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,8 +20,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -45,6 +49,24 @@ public class DashboardController implements Initializable {
     @FXML
     private Pane menuPane;
 
+    @FXML
+    private Button btnManageDietPlan;
+
+    @FXML
+    private Button btnManageEmployee;
+
+    @FXML
+    private Button btnManageMember;
+
+    @FXML
+    private Button btnManageReportGenarator;
+
+    @FXML
+    private Button btnManageSchedule;
+
+    @FXML
+    private Button btnHome;
+
     public void btnClose(MouseEvent mouseEvent) {
         System.exit(0);
     }
@@ -63,38 +85,54 @@ public class DashboardController implements Initializable {
 
     @FXML
     void btnGoToHome(MouseEvent event) {
-       navigation("/view/HomePage.fxml");
+        setColour(btnHome);
+        navigation("/view/HomePage.fxml");
     }
 
     @FXML
     void btnGoToManageDietPlan(MouseEvent event) {
+        setColour(btnManageDietPlan);
         navigation("/view/ManageDietPlan.fxml");
     }
 
     @FXML
     void btnGoToManageEmployee(MouseEvent event) {
+        setColour(btnManageEmployee);
         navigation("/view/ManageEmployee.fxml");
     }
 
     @FXML
     void btnGoToManageMember(MouseEvent event) {
+        setColour(btnManageMember);
         navigation("/view/ManageMember.fxml");
-
     }
 
     @FXML
     void btnGoToManageSchedule(MouseEvent event) {
+        setColour(btnManageSchedule);
         navigation("/view/ManageSchedule.fxml");
     }
 
     @FXML
     void btnGoToReportGenarate(MouseEvent event) {
+        setColour(btnManageReportGenarator);
         navigation("/view/ReportGenarator.fxml");
     }
 
     @FXML
     void btnSetting(MouseEvent event) {
 
+    }
+
+    private void setColour(Button event) {
+        ArrayList<Button> btns = new ArrayList(List.of(btnHome,btnManageMember,btnManageSchedule,btnManageEmployee,btnManageDietPlan));
+        String defaultColour = "-fx-background-color: none";
+        for (Button btn : btns){
+            btn.setStyle(defaultColour);
+        }
+
+        String inactiveStyle = "-fx-background-color: #C3D8CA";
+        event.setStyle(inactiveStyle);
     }
 
     public void navigation(String path){
