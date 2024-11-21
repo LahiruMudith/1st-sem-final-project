@@ -66,6 +66,7 @@ public class ManageScheduleController implements Initializable {
         try {
             ArrayList<ExerciseDto> exercise = scheduleModel.getExercise();
             MenuButton paymentPlan = (MenuButton) txtExercise;
+            paymentPlan.getItems().clear();
             for(ExerciseDto exerciseDto : exercise){
                 MenuItem menuItem = new MenuItem(exerciseDto.getExercise_name());
                 menuItem.setOnAction(event -> {
@@ -293,6 +294,8 @@ public class ManageScheduleController implements Initializable {
     void tblClick(MouseEvent event) throws SQLException {
         txtExercise.setDisable(true);
         txtCount.setEditable(false);
+        txtCount.setDisable(true);
+        txtSet.setDisable(true);
         txtSet.setEditable(false);
         imgAddExercise.setDisable(true);
 

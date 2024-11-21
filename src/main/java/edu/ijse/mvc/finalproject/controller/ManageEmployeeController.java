@@ -301,6 +301,7 @@ public class ManageEmployeeController implements Initializable {
                 age,
                 address
         );
+        System.out.println(employeeDto);
 
         boolean b = manageEmployeeModel.updateEmployee(employeeDto);
         if (b){

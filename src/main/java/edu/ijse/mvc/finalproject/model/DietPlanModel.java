@@ -63,4 +63,14 @@ public class DietPlanModel {
     public boolean deleteDietPlan(String id) {
         return CrudUtil.execute("delete from diet_plan where diet_plan_id = ?", id);
     }
+
+    public ArrayList<String> getDietPlanIds() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select diet_plan_id from diet_plan");
+
+        ArrayList<String> dietPlanIds = new ArrayList<>();
+        while (rst.next()){
+            dietPlanIds.add(rst.getString(1));
+        }
+        return dietPlanIds;
+    }
 }

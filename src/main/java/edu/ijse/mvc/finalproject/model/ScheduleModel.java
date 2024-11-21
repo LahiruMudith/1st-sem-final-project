@@ -86,7 +86,6 @@ public class ScheduleModel {
         try {
             connection.setAutoCommit(false);
 
-            System.out.println(scheduleDto.getAdmin_id());
             boolean isSavedSheduleTable = CrudUtil.execute("insert into schedule VALUES(?,?,?)",
                     scheduleDto.getSchedule_id(),
                     scheduleDto.getName(),

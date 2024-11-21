@@ -3,27 +3,21 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="223.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.mvc.finalproject.controller.PositionController">
+<AnchorPane prefHeight="223.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ijse.mvc.finalproject.controller.DietPlanReportPopUpMenuController">
    <children>
-      <Text layoutX="202.0" layoutY="28.899999618530273" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Position" wrappingWidth="130.13671875" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="197.0" AnchorPane.topAnchor="10.0">
-         <font>
-            <Font name="Poppins Bold" size="18.0" />
-         </font>
-      </Text>
-      <TextField fx:id="txtPositionName" layoutX="50.0" layoutY="91.0" prefHeight="43.0" prefWidth="434.0" promptText="Position Name" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="91.0" />
-      <Button layoutX="238.0" layoutY="166.0" mnemonicParsing="false" onAction="#btnAddPosition" style="-fx-background-color: #27ae60;" text="Add" AnchorPane.bottomAnchor="27.200000762939453" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="244.0">
+      <Button layoutX="203.0" layoutY="142.0" mnemonicParsing="false" onAction="#btnGenarate" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #27ae60;" text="Genarate">
          <font>
             <Font name="Poppins Medium" size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="496.0" layoutY="8.0" nodeOrientation="INHERIT" onMouseClicked="#btnClose" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="494.0" layoutY="14.0" nodeOrientation="INHERIT" onMouseClicked="#btnClose" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/icon/close.png" />
          </image>
@@ -34,10 +28,11 @@
             <Rectangle2D minX="1140.0" width="25.0" />
          </viewport>
       </ImageView>
-      <Text fx:id="txtError" fill="#c0392b" layoutX="376.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="108.13671875">
+      <Text fx:id="txtError1" fill="#c0392b" layoutX="386.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="108.13671875">
          <font>
             <Font name="Poppins Regular" size="11.0" />
          </font>
       </Text>
+      <ComboBox fx:id="txtDietPlanId" layoutX="47.0" layoutY="68.0" prefHeight="43.0" prefWidth="434.0" />
    </children>
 </AnchorPane>

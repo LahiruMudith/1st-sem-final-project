@@ -121,6 +121,8 @@ public class ManageDietPlanController implements Initializable {
 
         try {
             txtId.setText(dietPlanModel.getNextDeitPlanId());
+            LoginController loginController = new LoginController();
+            txtAdminId.setText(loginController.currentAdminId);
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);

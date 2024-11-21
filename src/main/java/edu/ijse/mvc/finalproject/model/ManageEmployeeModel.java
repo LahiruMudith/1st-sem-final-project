@@ -92,7 +92,7 @@ public class ManageEmployeeModel {
         return CrudUtil.execute("update employee set center_id=?, name=?, phone_number=?, date_of_hire=?, position=?, age=?, address=? WHERE employee_id = ?",
                 employeeDto.getCenter_id(),
                 employeeDto.getName(),
-                employeeDto.getPosition(),
+                employeeDto.getPhone_number(),
                 employeeDto.getDate_of_hire(),
                 employeeDto.getPosition(),
                 employeeDto.getAge(),

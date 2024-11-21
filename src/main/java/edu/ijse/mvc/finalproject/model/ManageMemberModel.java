@@ -20,7 +20,7 @@ public class ManageMemberModel {
             int newIdIndex = i + 1;
             return String.format("M%03d", newIdIndex);
         }
-        return null;
+        return "M001";
     }
     public ArrayList<PaymentPlanDto> getPaymentPlan() throws SQLException {
         ResultSet resultSet = CrudUtil.execute("select * from payment_plan");

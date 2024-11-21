@@ -151,7 +151,7 @@ public class ManageMemberController implements Initializable {
         String name = txtName.getText();
         String phoneNumber = txtPhoneNumber.getText();
         Date registrationDate = Date.valueOf(LocalDate.now());
-        String scheduleId = txtScheduleId.getText();
+        String scheduleId = txtScheduleId.getId();
         Double weight = Double.parseDouble(txtWeight.getText());
         String dietPlanId = txtDietPlanId.getText();
         String address = txtAddress.getText();
@@ -263,6 +263,7 @@ public class ManageMemberController implements Initializable {
         btnUpdate.setDisable(true);
 
         try {
+
             txtId.setText(manageMemberModel.getNextMemberId());
 
             MenuButton paymentPlan = (MenuButton) txtPaymentPlan;
