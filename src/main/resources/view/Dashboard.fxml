@@ -204,7 +204,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="36.0" layoutY="991.8" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#btnLogOut" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="7.2000000000000455" AnchorPane.leftAnchor="36.0">
+      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="36.0" layoutY="991.8" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#btnLogOut" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="36.0">
          <image>
             <Image url="@../assets/icon/icons8-exit-100.png" />
          </image>

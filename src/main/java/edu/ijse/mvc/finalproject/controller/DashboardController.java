@@ -1,19 +1,23 @@
 package edu.ijse.mvc.finalproject.controller;
 
+import edu.ijse.mvc.finalproject.AppInitializer;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -177,7 +181,16 @@ public class DashboardController implements Initializable {
         lblDate.setText(date);
     }
 
-    public void btnLogOut(MouseEvent mouseEvent) {
-        navigation("/view/login.fxml");
+    public void btnLogOut(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage1 = new Stage();
+        stage1.initStyle(StageStyle.TRANSPARENT);
+        stage1.getIcons().add(new Image(getClass().getResourceAsStream("/assets/pic/Group 5.png")));
+        stage1.setScene(scene);
+
+        Stage window = (Stage) btnHome.getScene().getWindow();
+        window.close();
+        stage1.show();
     }
 }

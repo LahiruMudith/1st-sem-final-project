@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
@@ -90,6 +91,7 @@ public class LoginController implements Initializable {
                         Scene scene = new Scene(fxmlLoader.load());
                         Stage stage1 = new Stage();
                         stage1.setScene(scene);
+                        stage1.getIcons().add(new Image(getClass().getResourceAsStream("/assets/pic/Group 5.png")));
                         stage1.initStyle(StageStyle.TRANSPARENT);
                         stage1.setMaximized(true);
                         stage1.setResizable(true);
