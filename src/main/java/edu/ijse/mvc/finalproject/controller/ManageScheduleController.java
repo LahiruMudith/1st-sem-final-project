@@ -1,5 +1,6 @@
 package edu.ijse.mvc.finalproject.controller;
 
+import edu.ijse.mvc.finalproject.DataValidate.DataValidate;
 import edu.ijse.mvc.finalproject.dto.AdminDto;
 import edu.ijse.mvc.finalproject.dto.ExerciseDto;
 import edu.ijse.mvc.finalproject.dto.ExerciseScheduleDto;
@@ -34,8 +35,8 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 public class ManageScheduleController implements Initializable {
+    DataValidate validate = new DataValidate();
     private ScheduleModel scheduleModel = new ScheduleModel();
-    private ManageMemberModel manageMemberModel = new ManageMemberModel();
     private ObservableList<ExerciseScheduleTM> tms = FXCollections.observableArrayList();
 
     @Override
@@ -54,6 +55,8 @@ public class ManageScheduleController implements Initializable {
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
         txtId.setEditable(false);
+
+        clearData();
 
         try {
             txtId.setText(scheduleModel.getNextScheduleId());
@@ -104,7 +107,7 @@ public class ManageScheduleController implements Initializable {
 
     private void loadTable() {
         try {
-            ArrayList<ExerciseScheduleDto> exerciseScheduleDtos = manageMemberModel.getSchedule();
+            ArrayList<ExerciseScheduleDto> exerciseScheduleDtos = scheduleModel.getSchedule();
             ObservableList<ExerciseScheduleTM> dtos = FXCollections.observableArrayList();
             Set<String> uniqueScheduleIds = new HashSet<>();
 
@@ -198,11 +201,6 @@ public class ManageScheduleController implements Initializable {
         int exerciseSet = Integer.parseInt(txtSet.getText());
         int exerciseCount = Integer.parseInt(txtCount.getText());
 
-        if (exerciseId == null) {
-            new Alert(Alert.AlertType.ERROR, "Please select exercise...!").show();
-            return;
-        }
-
         ExerciseScheduleTM exerciseScheduleTM = new ExerciseScheduleTM(
             scheduleId,
             exerciseId,
@@ -213,14 +211,10 @@ public class ManageScheduleController implements Initializable {
             adminId
         );
         tms.add(exerciseScheduleTM);
-//        for (ExerciseScheduleTM exerciseScheduleTM1 : tms) {
-//            if (exerciseScheduleTM.getExercise_name().equals(exerciseScheduleTM1.getExercise_name())) {
-//                exerciseScheduleTM1.setExercise_set((exerciseScheduleTM1.getExercise_set()+exerciseScheduleTM.getExercise_set()));
-//                exerciseScheduleTM1.setExercise_count((exerciseScheduleTM1.getExercise_count()+exerciseScheduleTM.getExercise_count()));
-//            }else {
-//                tms.add(exerciseScheduleTM);
-//            }
-//        }
+        for (ExerciseScheduleTM tm : tms) {
+            System.out.println(tm.getExercise_name());
+        }
+
         tblDescription.setItems(tms);
     }
 
@@ -249,61 +243,105 @@ public class ManageScheduleController implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        String scheduleId = txtId.getText();
-        String exerciseName = txtName.getText();
-        String adminId = txtAdminId.getId();
-        ScheduleDto scheduleDto = new ScheduleDto(scheduleId, exerciseName, adminId);
+        if (txtName.getText().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR,"Please Fill Name").show();
+        }else {
+            String scheduleId = txtId.getText();
+            String scheduleName = txtName.getText();
+            String adminId = txtAdminId.getId();
 
-        ArrayList<ExerciseScheduleDto> exerciseScheduleDtos = new ArrayList<>();
+            ScheduleDto scheduleDto = new ScheduleDto(scheduleId, scheduleName, adminId);
 
-        for (ExerciseScheduleTM tm : tms){
-            ExerciseScheduleDto exerciseScheduleDto = new ExerciseScheduleDto(
-                    tm.getSchedule_id(),
-                    tm.getExercise_id(),
-                    tm.getExercise_name(),
-                    tm.getSchedule_name(),
-                    tm.getExercise_count(),
-                    tm.getExercise_set(),
-                    tm.getAdmin_id()
-            );
-            exerciseScheduleDtos.add(exerciseScheduleDto);
-        }
-        try {
-            boolean b = scheduleModel.addSchedule(scheduleDto, exerciseScheduleDtos);
-            new Alert(Alert.AlertType.CONFIRMATION,"Schedule Add Successfully").show();
-            pageRefesh();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Schedule Added Fail");
-            alert.show();
+            ArrayList<ExerciseScheduleDto> exerciseScheduleDtos = new ArrayList<>();
+
+            for (ExerciseScheduleTM tm : tms){
+                ExerciseScheduleDto exerciseScheduleDto = new ExerciseScheduleDto(
+                        tm.getSchedule_id(),
+                        tm.getExercise_id(),
+                        tm.getExercise_name(),
+                        tm.getSchedule_name(),
+                        tm.getExercise_count(),
+                        tm.getExercise_set(),
+                        tm.getAdmin_id()
+                );
+                exerciseScheduleDtos.add(exerciseScheduleDto);
+            }
+            try {
+                boolean b = scheduleModel.addSchedule(scheduleDto, exerciseScheduleDtos);
+                new Alert(Alert.AlertType.CONFIRMATION,"Schedule Add Successfully").show();
+                pageRefesh();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Schedule Added Fail");
+                alert.show();
+            }
         }
     }
 
     @FXML
     void btnDelete(ActionEvent event) {
-
+        String id = txtId.getText();
+        boolean b = scheduleModel.deleteSchedule(id);
+        if (b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Schedule Delete Successfully").show();
+            pageRefesh();
+        }
     }
 
     @FXML
     void btnUpdate(ActionEvent event) {
+        if (txtName.getText().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR,"Please Fill Name").show();
+        }else {
+            String scheduleId = txtId.getText();
+            String exerciseName = txtName.getText();
+            String adminId = txtAdminId.getId();
+            ScheduleDto scheduleDto = new ScheduleDto(scheduleId, exerciseName, adminId);
 
+            ArrayList<ExerciseScheduleDto> exerciseScheduleDtos = new ArrayList<>();
+
+            for (ExerciseScheduleTM tm : tms){
+                ExerciseScheduleDto exerciseScheduleDto = new ExerciseScheduleDto(
+                        tm.getSchedule_id(),
+                        tm.getExercise_id(),
+                        tm.getExercise_name(),
+                        tm.getSchedule_name(),
+                        tm.getExercise_count(),
+                        tm.getExercise_set(),
+                        tm.getAdmin_id()
+                );
+                exerciseScheduleDtos.add(exerciseScheduleDto);
+            }
+            try {
+                boolean b = scheduleModel.updateSchedule(scheduleDto, exerciseScheduleDtos);
+                if (b){
+                    new Alert(Alert.AlertType.CONFIRMATION,"Schedule Update Successfully").show();
+                    pageRefesh();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Schedule Update Fail");
+                alert.show();
+            }
+        }
     }
 
     @FXML
     void tblClick(MouseEvent event) throws SQLException {
-        txtExercise.setDisable(true);
-        txtCount.setEditable(false);
-        txtCount.setDisable(true);
-        txtSet.setDisable(true);
-        txtSet.setEditable(false);
-        imgAddExercise.setDisable(true);
-
+//        txtExercise.setDisable(true);
+//        txtCount.setEditable(false);
+//        txtCount.setDisable(true);
+//        txtSet.setDisable(true);
+//        txtSet.setEditable(false);
+//        imgAddExercise.setDisable(true);
+        clearData();
         btnAdd.setDisable(true);
         btnDelete.setDisable(false);
         btnUpdate.setDisable(false);
 
-        ArrayList<ExerciseScheduleDto> exerciseScheduleDtos = manageMemberModel.getSchedule();
+        ArrayList<ExerciseScheduleDto> exerciseScheduleDtos = scheduleModel.getSchedule();
         String selectedId = tblMember.getSelectionModel().getSelectedItem().getSchedule_id();
         ObservableList<ExerciseScheduleTM> dtos = FXCollections.observableArrayList();
 
@@ -327,5 +365,15 @@ public class ManageScheduleController implements Initializable {
                 txtAdminId.setText(exerciseScheduleTM.getAdmin_id());
         }
         tblDescription.setItems(dtos);
+    }
+
+    public void clearData(){
+        txtName.clear();
+        txtId.clear();
+        txtAdminId.setText("");
+        txtExercise.setText("");
+        txtSet.clear();
+        txtCount.clear();
+        tblDescription.getItems().clear();
     }
 }

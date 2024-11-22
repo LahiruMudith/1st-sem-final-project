@@ -21,13 +21,13 @@
       </Text>
       <VBox layoutX="50.0" layoutY="66.0" prefHeight="151.0" prefWidth="474.0">
          <children>
-            <TextField fx:id="txtName" prefHeight="42.0" prefWidth="434.0" promptText="Exercise Id" />
-            <TextField fx:id="txtId" prefHeight="42.0" prefWidth="434.0" promptText="Exercise Name">
+            <TextField fx:id="txtName" focusTraversable="false" prefHeight="42.0" prefWidth="434.0" promptText="Exercise Id" />
+            <TextField fx:id="txtId" focusTraversable="false" prefHeight="42.0" prefWidth="434.0" promptText="Exercise Name">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="txtDes" prefHeight="44.0" prefWidth="434.0" promptText="Description">
+            <TextField fx:id="txtDes" focusTraversable="false" prefHeight="44.0" prefWidth="434.0" promptText="Description">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>

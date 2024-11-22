@@ -24,7 +24,7 @@
             <!-- Reusable Pane Template for Each Card -->
             <Pane fx:id="paneTemplate" prefHeight="382.0" prefWidth="271.0" HBox.hgrow="NEVER">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1011" height="381.0" width="271.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1011" height="381.0" onMouseClicked="#genaratePaymentReport" width="271.0">
                      <stroke>
                         <LinearGradient endX="0.6" endY="1.0" startX="0.2" startY="0.1">
                            <stops>
@@ -137,46 +137,6 @@
                      </image>
                   </ImageView>
                   <Button layoutX="45.0" layoutY="166.0" mnemonicParsing="false" onAction="#genarateDietPlanReport" prefHeight="43.0" prefWidth="187.0" style="-fx-background-color: none; -fx-border-color: #ffcc00; -fx-border-width: 4; -fx-border-radius: 15;" text="Diet Plan" textFill="#ffcc00">
-                     <font>
-                        <Font name="Ethnocentric" size="11.0" />
-                     </font>
-                  </Button>
-                  <CubicCurve controlX1="-50.0" controlX2="64.0" controlY1="-100.0" controlY2="30.0" endX="109.0" fill="#ffcc00" layoutX="160.0" layoutY="374.0" startX="-158.0" stroke="BLACK" />
-                  <Polygon fill="#ffcc00" layoutX="244.0" layoutY="320.0" points="-44.0, 18.0, 22.0, 18.0, 22.0, -14.0, 22.0, -47.0, -44.0, -47.0, -194.0, 11.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-               </children>
-            </Pane>
-            <Pane fx:id="paneTemplate2" prefHeight="382.0" prefWidth="271.0" HBox.hgrow="NEVER">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1011" height="381.0" width="271.0">
-                     <stroke>
-                        <LinearGradient endX="0.6" endY="1.0" startX="0.2" startY="0.1">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </stroke>
-                  </Rectangle>
-                  <Text fill="#ffcc00" layoutX="10.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buddika FITNESS CENTER" wrappingWidth="200.0">
-                     <font>
-                        <Font name="Dodger" size="16.0" />
-                     </font>
-                  </Text>
-                  <Circle fill="#ffcc00" layoutX="231.0" layoutY="40.0" radius="34.0" stroke="BLACK" strokeType="INSIDE" />
-                  <ImageView fitHeight="62.0" fitWidth="56.0" layoutX="204.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../assets/pic/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button layoutX="45.0" layoutY="166.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="187.0" style="-fx-background-color: none; -fx-border-color: #ffcc00; -fx-border-width: 4; -fx-border-radius: 15;" text="Monthly Revenue" textFill="#ffcc00">
                      <font>
                         <Font name="Ethnocentric" size="11.0" />
                      </font>

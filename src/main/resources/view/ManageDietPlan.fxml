@@ -136,7 +136,7 @@
                <children>
                   <Pane prefHeight="218.0" prefWidth="721.0" style="-fx-background-color: #5FE088; -fx-background-radius: 20;">
                      <children>
-                        <TextArea fx:id="txtDescription" focusTraversable="false" layoutX="42.0" layoutY="16.0" prefHeight="416.0" prefWidth="662.0" style="-fx-background-color: #5FE088;">
+                        <TextArea fx:id="txtDescription" focusTraversable="false" layoutX="42.0" layoutY="16.0" prefHeight="416.0" prefWidth="662.0" style="-fx-background-color: #5FE088;" wrapText="true">
                            <cursor>
                               <Cursor fx:constant="TEXT" />
                            </cursor>

@@ -1,5 +1,6 @@
 package edu.ijse.mvc.finalproject.controller;
 
+import edu.ijse.mvc.finalproject.DataValidate.DataValidate;
 import edu.ijse.mvc.finalproject.dto.*;
 import edu.ijse.mvc.finalproject.dto.tm.EmployeeTM;
 import edu.ijse.mvc.finalproject.model.ManageEmployeeModel;
@@ -30,6 +31,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ManageEmployeeController implements Initializable {
+    DataValidate validate = new DataValidate();
     ManageEmployeeModel manageEmployeeModel = new ManageEmployeeModel();
 
     @Override
@@ -105,6 +107,10 @@ public class ManageEmployeeController implements Initializable {
 
     @FXML
     void tblClick(MouseEvent event) {
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
+
         btnAdd.setDisable(true);
         btnDelete.setDisable(false);
         btnUpdate.setDisable(false);
@@ -144,34 +150,64 @@ public class ManageEmployeeController implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        Date date = Date.valueOf(LocalDate.now());
-        String centerId = txtCenterId.getId();
-        int age  = Integer.parseInt(txtAge.getText());
-        String address = txtAddress.getText();
-        String positionId = txtPosition.getText();
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
 
-        EmployeeDto employeeDto = new EmployeeDto(
-                id,
-                centerId,
-                name,
-                phoneNumber,
-                date,
-                positionId,
-                age,
-                address
-        );
+        if (txtName.getText().isEmpty() && txtPhoneNumber.getText().isEmpty() && txtAddress.getText().isEmpty() && txtPosition.getText().isEmpty() && txtAge.getText().isEmpty() && txtCenterId.getText().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR,"Please Fill Details").show();
+        }else {
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String phoneNumber = txtPhoneNumber.getText();
+            Date date = Date.valueOf(LocalDate.now());
+            String centerId = txtCenterId.getId();
+            int age  = Integer.parseInt(txtAge.getText());
+            String address = txtAddress.getText();
+            String positionId = txtPosition.getText();
 
-        boolean b = manageEmployeeModel.addEmployee(employeeDto);
-        if (b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Member Added Successfully").show();
-            pageRefesh();
+            boolean validateName = validate.validateName(name);
+            boolean validatePhoneNumber = validate.validatePhoneNumber(phoneNumber);
+            boolean validateAddress = validate.validateAddress(address);
+
+            if (!validateName){
+                txtName.setStyle(txtName.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validatePhoneNumber){
+                txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateAddress){
+                txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+
+            if (validateName && validatePhoneNumber && validateAddress){
+                EmployeeDto employeeDto = new EmployeeDto(
+                        id,
+                        centerId,
+                        name,
+                        phoneNumber,
+                        date,
+                        positionId,
+                        age,
+                        address
+                );
+
+                boolean b = manageEmployeeModel.addEmployee(employeeDto);
+                if (b){
+                    new Alert(Alert.AlertType.CONFIRMATION,"Member Added Successfully").show();
+                    pageRefesh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Please Check All Details").show();
+                }
+            }
         }
     }
 
     private void pageRefesh() {
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
+
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
 
@@ -262,51 +298,78 @@ public class ManageEmployeeController implements Initializable {
     @FXML
     void btnDelete(ActionEvent event) {
         boolean b = manageEmployeeModel.deleteEmployee(txtId.getText());
-        new Alert(Alert.AlertType.CONFIRMATION,"Member Delete Successfully").show();
-        pageRefesh();
+        if (b){
+            new Alert(Alert.AlertType.CONFIRMATION,"Member Delete Successfully").show();
+            pageRefesh();
+        }
     }
 
     @FXML
     void btnUpdate(ActionEvent event) {
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        Date date = Date.valueOf(LocalDate.now());
-        String centerId = txtCenterId.getText();
-        int age  = Integer.parseInt(txtAge.getText());
-        String address = txtAddress.getText();
-        String positionId = txtPosition.getText();
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
 
-        try {
-            ArrayList<FitnessCenterDto> centerDetails = manageEmployeeModel.getCenterDetails();
-            for (FitnessCenterDto centerDto : centerDetails) {
-                if (centerDto.getCenter_name().equals(centerId)) {
-                    centerId= centerDto.getCenter_id();
+        if (txtName.getText().isEmpty() && txtPhoneNumber.getText().isEmpty() && txtAddress.getText().isEmpty() && txtPosition.getText().isEmpty() && txtAge.getText().isEmpty() && txtCenterId.getText().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR,"Please Fill Details").show();
+        }else {
+            String id = txtId.getText();
+            String name = txtName.getText();
+            String phoneNumber = txtPhoneNumber.getText();
+            Date date = Date.valueOf(LocalDate.now());
+            String centerId = txtCenterId.getText();
+            int age  = Integer.parseInt(txtAge.getText());
+            String address = txtAddress.getText();
+            String positionId = txtPosition.getText();
+
+            boolean validateName = validate.validateName(name);
+            boolean validatePhoneNumber = validate.validatePhoneNumber(phoneNumber);
+            boolean validateAddress = validate.validateAddress(address);
+
+            if (!validateName){
+                txtName.setStyle(txtName.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validatePhoneNumber){
+                txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateAddress){
+                txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+
+            try {
+                ArrayList<FitnessCenterDto> centerDetails = manageEmployeeModel.getCenterDetails();
+                for (FitnessCenterDto centerDto : centerDetails) {
+                    if (centerDto.getCenter_name().equals(centerId)) {
+                        centerId= centerDto.getCenter_id();
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Center Id Set Error");
+                alert.show();
+            }
+
+            if (validateName && validatePhoneNumber && validateAddress){
+                EmployeeDto employeeDto = new EmployeeDto(
+                        id,
+                        centerId,
+                        name,
+                        phoneNumber,
+                        date,
+                        positionId,
+                        age,
+                        address
+                );
+
+                boolean b = manageEmployeeModel.updateEmployee(employeeDto);
+                if (b){
+                    new Alert(Alert.AlertType.CONFIRMATION,"Member Update Successfully").show();
+                    pageRefesh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Please Check All Details").show();
                 }
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Center Id Set Error");
-            alert.show();
-        }
-
-        EmployeeDto employeeDto = new EmployeeDto(
-                id,
-                centerId,
-                name,
-                phoneNumber,
-                date,
-                positionId,
-                age,
-                address
-        );
-        System.out.println(employeeDto);
-
-        boolean b = manageEmployeeModel.updateEmployee(employeeDto);
-        if (b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Member Update Successfully").show();
-            pageRefesh();
         }
     }
 

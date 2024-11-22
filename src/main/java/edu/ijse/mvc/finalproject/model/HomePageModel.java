@@ -55,7 +55,8 @@ public class HomePageModel{
                     rst.getString(3),
                     rst.getDate(4),
                     rst.getDouble(5),
-                    rst.getString(6)
+                    rst.getString(6),
+                    rst.getString(7)
             );
             paymentDetails.add(paymentDetailTM);
         }
@@ -89,13 +90,14 @@ public class HomePageModel{
             if (isSavedPaymentTable){
                 System.out.println("Payment Table Saved Done...!");
 
-                boolean isSavedPaymentDetailsTable = CrudUtil.execute("insert into paymentdetail values (?,?,?,?,?,?)",
+                boolean isSavedPaymentDetailsTable = CrudUtil.execute("insert into paymentdetail values (?,?,?,?,?,?,?)",
                         paymentDetailDto.getPayment_id(),
                         paymentDetailDto.getMember_id(),
                         paymentDetailDto.getMember_name(),
                         paymentDetailDto.getPayment_date(),
                         paymentDetailDto.getPrice(),
-                        paymentDetailDto.getPayment_method()
+                        paymentDetailDto.getPayment_method(),
+                        paymentDetailDto.getMonth()
                         );
 
                 if (isSavedPaymentDetailsTable){
@@ -113,5 +115,45 @@ public class HomePageModel{
         }finally {
             connection.setAutoCommit(true);
         }
+    }
+
+    public int getMemberCount() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select count(*) from member");
+
+        int count = 0;
+        while (rst.next()){
+            count = rst.getInt(1);
+        }
+        return count;
+    }
+
+    public int getEmployeeCount() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select count(employee_id) from employee");
+
+        int count = 0;
+        while (rst.next()){
+            count = rst.getInt(1);
+        }
+        return count;
+    }
+
+    public int getScheduleCount() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select count(schedule_id) from schedule");
+
+        int count = 0;
+        while (rst.next()){
+            count = rst.getInt(1);
+        }
+        return count;
+    }
+
+    public int getDietPlanCount() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select count(diet_plan_id) from diet_plan");
+
+        int count = 0;
+        while (rst.next()){
+            count = rst.getInt(1);
+        }
+        return count;
     }
 }

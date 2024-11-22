@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
+    LoginController loginController = new LoginController();
     @FXML
     private Pane bodyPane;
 
@@ -151,6 +152,9 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bodyPane.getChildren().clear();
+        lblAdminId.setText(loginController.currentAdminId);
+        lblAdminName.setText(loginController.currentAdminName);
+
         try {
             AnchorPane load = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
             load.prefWidthProperty().bind(bodyPane.widthProperty());
@@ -171,5 +175,9 @@ public class DashboardController implements Initializable {
         SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
         String date = sdf.format(new Date());
         lblDate.setText(date);
+    }
+
+    public void btnLogOut(MouseEvent mouseEvent) {
+        navigation("/view/login.fxml");
     }
 }

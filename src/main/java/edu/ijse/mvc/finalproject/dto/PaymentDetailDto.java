@@ -16,4 +16,5 @@ public class PaymentDetailDto {
     Date payment_date;
     double price;
     String payment_method;
+    String month;
 }

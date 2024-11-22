@@ -136,4 +136,81 @@ public class ScheduleModel {
         }
         return scheduleNames;
     }
+
+    public ArrayList<ExerciseScheduleDto> getSchedule() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select * from exerciseSchedule");
+        ArrayList<ExerciseScheduleDto> list = new ArrayList<>();
+
+        while (resultSet.next()){
+            ExerciseScheduleDto exerciseScheduleDto = new ExerciseScheduleDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getInt(5),
+                    resultSet.getInt(6),
+                    resultSet.getString(7)
+            );
+            list.add(exerciseScheduleDto);
+        }
+        return list;
+    }
+
+    public boolean updateSchedule(ScheduleDto scheduleDto, ArrayList<ExerciseScheduleDto> exerciseScheduleDtos) throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        try {
+            connection.setAutoCommit(false);
+
+            boolean isSavedSheduleTable = CrudUtil.execute("UPDATE schedule SET name = ?, admin_id = ? WHERE schedule_id = ?",
+                    scheduleDto.getSchedule_id(),
+                    scheduleDto.getName(),
+                    scheduleDto.getAdmin_id()
+            );
+            if (isSavedSheduleTable){
+                boolean isSavedExerciseSheduleTable = false;
+                for (ExerciseScheduleDto exerciseScheduleDto : exerciseScheduleDtos){
+                    isSavedExerciseSheduleTable = CrudUtil.execute("UPDATE exerciseSchedule SET exercise_id = ?, exercise_name = ?, schedule_name = ?, exercise_count = ?, exercise_set = ?, admin_id = ? WHERE schedule_id = ?",
+                            exerciseScheduleDto.getExercise_id(),
+                            exerciseScheduleDto.getExercise_name(),
+                            exerciseScheduleDto.getSchedule_name(),
+                            exerciseScheduleDto.getExercise_count(),
+                            exerciseScheduleDto.getExercise_set(),
+                            exerciseScheduleDto.getAdmin_id(),
+                            scheduleDto.getSchedule_id()
+                            );
+                }
+                if (isSavedExerciseSheduleTable){
+                    connection.commit();
+                    return true;
+                }
+            }
+            connection.rollback();
+            return false;
+        }catch (Exception e){
+            connection.rollback();
+            return false;
+        }finally {
+            connection.setAutoCommit(true);
+        }
+    }
+
+    public boolean deleteSchedule(String id) {
+        return CrudUtil.execute("delete from schedule where schedule_id = ?",
+                id
+        );
+    }
+
+    public String getNextExerciseId() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select exercise_id from exercise order by exercise_id desc limit 1");
+
+        if (resultSet.next()){
+            String lastId = resultSet.getString(1);
+            String substring = lastId.substring(3);
+            int i = Integer.parseInt(substring);
+            int newIdIndex = i + 1;
+            return String.format("EXE%03d", newIdIndex);
+        }
+        return null;
+    }
 }

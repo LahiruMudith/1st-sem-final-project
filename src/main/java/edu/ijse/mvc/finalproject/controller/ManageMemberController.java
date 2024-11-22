@@ -1,5 +1,6 @@
 package edu.ijse.mvc.finalproject.controller;
 
+import edu.ijse.mvc.finalproject.DataValidate.DataValidate;
 import edu.ijse.mvc.finalproject.dto.*;
 import edu.ijse.mvc.finalproject.dto.tm.MemberTM;
 import edu.ijse.mvc.finalproject.model.ManageMemberModel;
@@ -8,13 +9,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.skin.VirtualFlow;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 
 
 import java.net.URL;
@@ -23,9 +20,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 public class ManageMemberController implements Initializable {
+    DataValidate validate = new DataValidate();
     ManageMemberModel manageMemberModel = new ManageMemberModel();
     @FXML
     private Button btnAdd;
@@ -104,35 +101,76 @@ public class ManageMemberController implements Initializable {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        String name = txtName.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        Date registrationDate = Date.valueOf(LocalDate.now());
-        String scheduleId = txtScheduleId.getId();
-        Double weight = Double.parseDouble(txtWeight.getText());
-        String dietPlanId = txtDietPlanId.getId();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        Double height = Double.parseDouble(txtHeight.getText());
-        String id = txtId.getText();
-        String paymentPlan = txtPaymentPlan.getId();
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
+        txtEmail.setStyle(txtEmail.getStyle() + "; -fx-border-color:  #5FE088");
+        txtWeight.setStyle(txtWeight.getStyle() + "; -fx-border-color:  #5FE088");
+        txtHeight.setStyle(txtHeight.getStyle() + "; -fx-border-color:  #5FE088");
 
-        MemberDto memberDto = new MemberDto(
-                id,
-                name,
-                address,
-                phoneNumber,
-                email,
-                registrationDate,
-                weight,
-                height,
-                scheduleId,
-                paymentPlan,
-                dietPlanId
-        );
-        boolean b = manageMemberModel.addMember(memberDto);
-        if (b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Member Added Successfully").show();
-            pageRefesh();
+        if (txtName.getText().isEmpty() && txtPhoneNumber.getText().isEmpty() && txtAddress.getText().isEmpty() && txtEmail.getText().isEmpty() && txtWeight.getText().isEmpty() && txtHeight.getText().isEmpty() ) {
+            new Alert(Alert.AlertType.ERROR,"Please Fill Details").show();
+        }else {
+            String name = txtName.getText();
+            String phoneNumber = txtPhoneNumber.getText();
+            Date registrationDate = Date.valueOf(LocalDate.now());
+            String scheduleId = txtScheduleId.getId();
+            Double weight = Double.valueOf(txtWeight.getText());
+            String dietPlanId = txtDietPlanId.getId();
+            String address = txtAddress.getText();
+            String email = txtEmail.getText();
+            Double height = Double.parseDouble(txtHeight.getText());
+            String id = txtId.getText();
+            String paymentPlan = txtPaymentPlan.getId();
+
+            boolean validateName = validate.validateName(name);
+            boolean validatePhoneNumber = validate.validatePhoneNumber(phoneNumber);
+            boolean validateEmail = validate.validateEmail(email);
+            boolean validateAddress = validate.validateAddress(address);
+            boolean validateWeight = validate.validateDoubleAndIntNumbers(txtWeight.getText());
+            boolean validateHeight = validate.validateDoubleAndIntNumbers(txtHeight.getText());
+
+            if (!validateName){
+                txtName.setStyle(txtName.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validatePhoneNumber){
+                txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateEmail){
+                txtEmail.setStyle(txtEmail.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateAddress){
+                txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateWeight){
+                txtWeight.setStyle(txtWeight.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateHeight){
+                txtHeight.setStyle(txtHeight.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+
+            if (validateName && validatePhoneNumber && validateEmail && validateAddress && validateWeight && validateHeight) {
+                MemberDto memberDto = new MemberDto(
+                        id,
+                        name,
+                        address,
+                        phoneNumber,
+                        email,
+                        registrationDate,
+                        weight,
+                        height,
+                        scheduleId,
+                        paymentPlan,
+                        dietPlanId
+                );
+                boolean b = manageMemberModel.addMember(memberDto);
+                if (b){
+                    new Alert(Alert.AlertType.CONFIRMATION,"Member Added Successfully").show();
+                    pageRefesh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Please Check All Details").show();
+                }
+            }
         }
     }
 
@@ -148,65 +186,113 @@ public class ManageMemberController implements Initializable {
 
     @FXML
     void btnUpdate(ActionEvent event) {
-        String name = txtName.getText();
-        String phoneNumber = txtPhoneNumber.getText();
-        Date registrationDate = Date.valueOf(LocalDate.now());
-        String scheduleId = txtScheduleId.getId();
-        Double weight = Double.parseDouble(txtWeight.getText());
-        String dietPlanId = txtDietPlanId.getText();
-        String address = txtAddress.getText();
-        String email = txtEmail.getText();
-        Double height = Double.parseDouble(txtHeight.getText());
-        String id = txtId.getText();
-        String paymentPlan = txtPaymentPlan.getText();
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
+        txtEmail.setStyle(txtEmail.getStyle() + "; -fx-border-color:  #5FE088");
+        txtWeight.setStyle(txtWeight.getStyle() + "; -fx-border-color:  #5FE088");
+        txtHeight.setStyle(txtHeight.getStyle() + "; -fx-border-color:  #5FE088");
 
-        try {
-            ArrayList<ExerciseScheduleDto> schedule = manageMemberModel.getSchedule();
-            for (ExerciseScheduleDto exerciseScheduleDto : schedule) {
-                if (exerciseScheduleDto.getSchedule_id().equals(scheduleId)) {
-                    scheduleId = exerciseScheduleDto.getSchedule_id();
-                }
-            }
-            ArrayList<PaymentPlanDto> paymentPlanDtos = manageMemberModel.getPaymentPlan();
-            for (PaymentPlanDto paymentPlanDto : paymentPlanDtos) {
-                if (paymentPlanDto.getPlan_name().equals(paymentPlan)) {
-                    paymentPlan = paymentPlanDto.getPlan_id();
-                }
-            }
-            ArrayList<DietPlanDto>  dietPlanDtos = manageMemberModel.getDietPlan();
-            for (DietPlanDto dietPlanDto : dietPlanDtos) {
-                if (dietPlanDto.getName().equals(dietPlanId)) {
-                    dietPlanId = dietPlanDto.getDiet_plan_id();
-                }
-            }
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Menu Item Set Error");
-            alert.show();
-        }
+        if (txtName.getText().isEmpty() && txtPhoneNumber.getText().isEmpty() && txtAddress.getText().isEmpty() && txtEmail.getText().isEmpty() && txtWeight.getText().isEmpty() && txtHeight.getText().isEmpty() ) {
+            new Alert(Alert.AlertType.ERROR,"Please Fill Details").show();
+        }else {
+            String name = txtName.getText();
+            String phoneNumber = txtPhoneNumber.getText();
+            Date registrationDate = Date.valueOf(LocalDate.now());
+            String scheduleId = txtScheduleId.getText();
+            Double weight = Double.parseDouble(txtWeight.getText());
+            String dietPlanId = txtDietPlanId.getText();
+            String address = txtAddress.getText();
+            String email = txtEmail.getText();
+            Double height = Double.parseDouble(txtHeight.getText());
+            String id = txtId.getText();
+            String paymentPlan = txtPaymentPlan.getText();
 
-        MemberDto memberDto = new MemberDto(
-                id,
-                name,
-                address,
-                phoneNumber,
-                email,
-                registrationDate,
-                weight,
-                height,
-                scheduleId,
-                paymentPlan,
-                dietPlanId
-        );
-        boolean b = manageMemberModel.updateMember(memberDto);
-        if (b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Member Update Successfully").show();
-            pageRefesh();
+            boolean validateName = validate.validateName(txtName.getText());
+            boolean validatePhoneNumber = validate.validatePhoneNumber(txtPhoneNumber.getText());
+            boolean validateEmail = validate.validateEmail(txtEmail.getText());
+            boolean validateAddress = validate.validateAddress(txtAddress.getText());
+            boolean validateWeight = validate.validateDoubleAndIntNumbers(txtWeight.getText());
+            boolean validateHeight = validate.validateDoubleAndIntNumbers(txtHeight.getText());
+
+            if (!validateName){
+                txtName.setStyle(txtName.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validatePhoneNumber){
+                txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateEmail){
+                txtEmail.setStyle(txtEmail.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateAddress){
+                txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateWeight){
+                txtWeight.setStyle(txtWeight.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+            if (!validateHeight){
+                txtHeight.setStyle(txtHeight.getStyle() + "; -fx-border-color: red; -fx-border-width: 0 0 2 0 ");
+            }
+
+            try {
+                ArrayList<ScheduleDto> schedule = manageMemberModel.getSchedule();
+                for (ScheduleDto scheduleDto : schedule) {
+                    if (scheduleDto.getName().equals(scheduleId)) {
+                        scheduleId = scheduleDto.getSchedule_id();
+                    }
+                }
+                ArrayList<PaymentPlanDto> paymentPlanDtos = manageMemberModel.getPaymentPlan();
+                for (PaymentPlanDto paymentPlanDto : paymentPlanDtos) {
+                    if (paymentPlanDto.getPlan_name().equals(paymentPlan)) {
+                        paymentPlan = paymentPlanDto.getPlan_id();
+                    }
+                }
+                ArrayList<DietPlanDto>  dietPlanDtos = manageMemberModel.getDietPlan();
+                for (DietPlanDto dietPlanDto : dietPlanDtos) {
+                    if (dietPlanDto.getName().equals(dietPlanId)) {
+                        dietPlanId = dietPlanDto.getDiet_plan_id();
+                    }
+                }
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Menu Item Set Error");
+                alert.show();
+            }
+
+            if (validateName && validatePhoneNumber && validateEmail && validateAddress && validateWeight && validateHeight) {
+                MemberDto memberDto = new MemberDto(
+                        id,
+                        name,
+                        address,
+                        phoneNumber,
+                        email,
+                        registrationDate,
+                        weight,
+                        height,
+                        scheduleId,
+                        paymentPlan,
+                        dietPlanId
+                );
+                boolean b = manageMemberModel.updateMember(memberDto);
+                if (b){
+                    new Alert(Alert.AlertType.CONFIRMATION,"Member Update Successfully").show();
+                    pageRefesh();
+                }else {
+                    new Alert(Alert.AlertType.ERROR,"Please Check Details").show();
+                }
+            }
         }
     }
 
     @FXML
     void tblClick(MouseEvent event) {
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
+        txtEmail.setStyle(txtEmail.getStyle() + "; -fx-border-color:  #5FE088");
+        txtWeight.setStyle(txtWeight.getStyle() + "; -fx-border-color:  #5FE088");
+        txtHeight.setStyle(txtHeight.getStyle() + "; -fx-border-color:  #5FE088");
+
         btnUpdate.setDisable(false);
         btnDelete.setDisable(false);
         btnAdd.setDisable(true);
@@ -258,9 +344,17 @@ public class ManageMemberController implements Initializable {
     }
 
     public void pageRefesh(){
+        txtName.setStyle(txtName.getStyle() + "; -fx-border-color:  #5FE088");
+        txtPhoneNumber.setStyle(txtPhoneNumber.getStyle() + "; -fx-border-color:  #5FE088");
+        txtAddress.setStyle(txtAddress.getStyle() + "; -fx-border-color:  #5FE088");
+        txtEmail.setStyle(txtEmail.getStyle() + "; -fx-border-color:  #5FE088");
+        txtWeight.setStyle(txtWeight.getStyle() + "; -fx-border-color:  #5FE088");
+        txtHeight.setStyle(txtHeight.getStyle() + "; -fx-border-color:  #5FE088");
+
         clearPage();
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
+        btnAdd.setDisable(false);
 
         try {
 
@@ -278,12 +372,12 @@ public class ManageMemberController implements Initializable {
             }
 
             MenuButton schedule = (MenuButton) txtScheduleId;
-            ArrayList<ExerciseScheduleDto> scheduleList = manageMemberModel.getSchedule();
-            for(ExerciseScheduleDto exerciseScheduleDto : scheduleList){
-                MenuItem menuItem = new MenuItem(exerciseScheduleDto.getSchedule_name());
+            ArrayList<ScheduleDto> scheduleList = manageMemberModel.getSchedule();
+            for(ScheduleDto scheduleDto : scheduleList){
+                MenuItem menuItem = new MenuItem(scheduleDto.getName());
                 menuItem.setOnAction(event -> {
-                    schedule.setText(exerciseScheduleDto.getSchedule_name());
-                    schedule.setId(exerciseScheduleDto.getSchedule_id());
+                    schedule.setText(scheduleDto.getName());
+                    schedule.setId(scheduleDto.getSchedule_id());
                 });
                 schedule.getItems().add(menuItem);
             }
